@@ -1,0 +1,731 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+# Translators:
+# kurdyma <transifex.com@kurdyenviolien.nl>, 2016
+# Angelo Dini <finalangeljp@hotmail.com>, 2016
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-02-12 13:37+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Angelo Dini <finalangeljp@hotmail.com>, 2016\n"
+"Language-Team: Dutch (https://www.transifex.com/divio/teams/58664/nl/)\n"
+"Language: nl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: aldryn_forms/action_backends.py:13 aldryn_forms/models.py:98
+#: aldryn_forms/models.py:510
+msgid "Default"
+msgstr "Default"
+
+#: aldryn_forms/action_backends.py:23
+#, fuzzy
+#| msgid "Email Field"
+msgid "Email only"
+msgstr "Email Veld"
+
+#: aldryn_forms/action_backends.py:31
+msgid "None"
+msgstr ""
+
+#: aldryn_forms/admin/base.py:40
+msgid "data"
+msgstr "data"
+
+#: aldryn_forms/admin/base.py:56
+msgid "people notified"
+msgstr "mensen die op de hoogte zijn gesteld"
+
+#: aldryn_forms/admin/exporter.py:12
+msgid "Date"
+msgstr ""
+
+#: aldryn_forms/admin/forms.py:34
+msgid "from date"
+msgstr "van datum"
+
+#: aldryn_forms/admin/forms.py:39
+msgid "to date"
+msgstr "tot datum"
+
+#: aldryn_forms/admin/forms.py:44
+msgid "language"
+msgstr "taal"
+
+#: aldryn_forms/admin/forms.py:59
+msgid ""
+"Export failed! More than 65,536 entries found, exceeded Excel limitation!"
+msgstr ""
+
+#: aldryn_forms/admin/forms.py:133
+msgid "Please select at least one field to export."
+msgstr "Selecteer in ieder geval 1 veld om te exporteren."
+
+#: aldryn_forms/admin/views.py:69
+msgid "No records found"
+msgstr "Geen records gevonden"
+
+#: aldryn_forms/apps.py:7 aldryn_forms/cms_apps.py:9
+#: aldryn_forms/cms_plugins.py:53
+msgid "Forms"
+msgstr "Formulieren"
+
+#: aldryn_forms/cms_plugins.py:62
+msgid "Form"
+msgstr "Formulier"
+
+#: aldryn_forms/cms_plugins.py:63
+#, fuzzy
+#| msgid "Form fields"
+msgid "Form types"
+msgstr "Formulier velden"
+
+#: aldryn_forms/cms_plugins.py:77 aldryn_forms/cms_plugins.py:252
+#: aldryn_forms/cms_plugins.py:427
+#: aldryn_forms/contrib/email_notifications/cms_plugins.py:137
+msgid "Advanced Settings"
+msgstr "Geavanceerde Settings"
+
+#: aldryn_forms/cms_plugins.py:214
+msgid "The form has been sent."
+msgstr "Het formulier is verzonden."
+
+#: aldryn_forms/cms_plugins.py:243
+msgid "Fieldset"
+msgstr "Fieldset"
+
+#: aldryn_forms/cms_plugins.py:280
+msgid "Form fields"
+msgstr "Formulier velden"
+
+#: aldryn_forms/cms_plugins.py:501
+msgid "Text Field"
+msgstr "Tekst Veld"
+
+#: aldryn_forms/cms_plugins.py:505
+msgid "Text Area Field"
+msgstr "Text Area Veld"
+
+#: aldryn_forms/cms_plugins.py:546
+#, fuzzy
+#| msgid "Text Field"
+msgid "Hidden Field"
+msgstr "Tekst Veld"
+
+#: aldryn_forms/cms_plugins.py:554
+#, fuzzy
+#| msgid "Text Field"
+msgid "Phone Field"
+msgstr "Tekst Veld"
+
+#: aldryn_forms/cms_plugins.py:559
+#, fuzzy
+#| msgid "Text Field"
+msgid "Number Field"
+msgstr "Tekst Veld"
+
+#: aldryn_forms/cms_plugins.py:564
+msgid "Email Field"
+msgstr "Email Veld"
+
+#: aldryn_forms/cms_plugins.py:600
+msgid "File upload field"
+msgstr "Bestand upload veld"
+
+#: aldryn_forms/cms_plugins.py:680
+msgid "Image upload field"
+msgstr "Afbeelding upload veld"
+
+#: aldryn_forms/cms_plugins.py:718
+msgid "Yes/No Field"
+msgstr "Ja/Nee Veld"
+
+#: aldryn_forms/cms_plugins.py:742
+msgid "Yes"
+msgstr "Ja"
+
+#: aldryn_forms/cms_plugins.py:742
+msgid "No"
+msgstr "Nee"
+
+#: aldryn_forms/cms_plugins.py:750
+msgid "Select Field"
+msgstr "Select Veld"
+
+#: aldryn_forms/cms_plugins.py:786
+msgid "Multiple Select Field"
+msgstr "Multiple Select Veld"
+
+#: aldryn_forms/cms_plugins.py:825
+msgid "Multiple Checkbox Field"
+msgstr ""
+
+#: aldryn_forms/cms_plugins.py:829
+msgid "Radio Select Field"
+msgstr "Radio Select Veld"
+
+#: aldryn_forms/cms_plugins.py:872
+msgid "Captcha Field"
+msgstr "Captcha Veld"
+
+#: aldryn_forms/cms_plugins.py:892
+msgid "Honeypot Captcha"
+msgstr ""
+
+#: aldryn_forms/cms_plugins.py:921
+msgid "Submit Button"
+msgstr "Verzend Knop"
+
+#: aldryn_forms/contrib/email_notifications/cms_plugins.py:26
+msgid "new email notification"
+msgstr "nieuw email bericht"
+
+#: aldryn_forms/contrib/email_notifications/cms_plugins.py:27
+msgid "new email notifications"
+msgstr "nieuwe email berichten"
+
+#: aldryn_forms/contrib/email_notifications/cms_plugins.py:51
+#: aldryn_forms/models.py:151
+msgid "Recipients"
+msgstr "Ontvangers"
+
+#: aldryn_forms/contrib/email_notifications/cms_plugins.py:63
+#, python-brace-format
+msgid ""
+"variables can be used with by wrapping with \"${variable}\" like ${variable}"
+msgstr ""
+"variabelen kunnen gebruikt worden door \"${variable}\" er omheen te zetten, "
+"zoals ${variable}"
+
+#: aldryn_forms/contrib/email_notifications/cms_plugins.py:92
+msgid "Email"
+msgstr ""
+
+#: aldryn_forms/contrib/email_notifications/cms_plugins.py:117
+msgid "available text variables"
+msgstr "beschikbare tekst variabelen"
+
+#: aldryn_forms/contrib/email_notifications/cms_plugins.py:121
+msgid "Form (Advanced)"
+msgstr "Formulier (Geavanceerd)"
+
+#: aldryn_forms/contrib/email_notifications/models.py:25
+msgid "default"
+msgstr "default"
+
+#: aldryn_forms/contrib/email_notifications/models.py:59
+msgid "Email notification"
+msgstr ""
+
+#: aldryn_forms/contrib/email_notifications/models.py:60
+msgid "Email notifications"
+msgstr ""
+
+#: aldryn_forms/contrib/email_notifications/models.py:63
+msgid "theme"
+msgstr "thema"
+
+#: aldryn_forms/contrib/email_notifications/models.py:65
+msgid "Provides the base theme for the email."
+msgstr "Verschaft het basis thema voor de email."
+
+#: aldryn_forms/contrib/email_notifications/models.py:69
+msgid "to name"
+msgstr "'aan' naam"
+
+#: aldryn_forms/contrib/email_notifications/models.py:74
+msgid "to email"
+msgstr "'aan' email"
+
+#: aldryn_forms/contrib/email_notifications/models.py:80
+msgid "to user"
+msgstr "'aan' gebruiker"
+
+#: aldryn_forms/contrib/email_notifications/models.py:87
+msgid "from name"
+msgstr "'van' naam"
+
+#: aldryn_forms/contrib/email_notifications/models.py:92
+msgid "from email"
+msgstr "'van' email"
+
+#: aldryn_forms/contrib/email_notifications/models.py:97
+msgid "subject"
+msgstr "onderwerp"
+
+#: aldryn_forms/contrib/email_notifications/models.py:102
+msgid "email body (txt)"
+msgstr "email body (txt)"
+
+#: aldryn_forms/contrib/email_notifications/models.py:104
+msgid "used when rendering the email in text only mode."
+msgstr "gebruikt als de email in tekst mode wordt gemaakt."
+
+#: aldryn_forms/contrib/email_notifications/models.py:107
+msgid "email body (html)"
+msgstr "email body (html)"
+
+#: aldryn_forms/contrib/email_notifications/models.py:109
+msgid "used when rendering the email in html."
+msgstr "gebruikt als de email in html mode wordt gemaakt."
+
+#: aldryn_forms/contrib/email_notifications/models.py:126
+msgid "Please provide a recipient."
+msgstr "Geef een ontvanger op."
+
+#: aldryn_forms/contrib/email_notifications/notification.py:54
+msgid "Fields"
+msgstr "Velden"
+
+#: aldryn_forms/forms.py:29
+#, python-format
+msgid ""
+"File size must be under %(max_size)s. Current file size is %(actual_size)s."
+msgstr ""
+
+#: aldryn_forms/forms.py:64
+#, python-format
+msgid ""
+"Image width must be under %(max_size)s pixels. Current width is "
+"%(actual_size)s pixels."
+msgstr ""
+
+#: aldryn_forms/forms.py:74
+#, python-format
+msgid ""
+"Image height must be under %(max_size)s pixels. Current height is "
+"%(actual_size)s pixels."
+msgstr ""
+
+#: aldryn_forms/forms.py:90
+msgid "Invalid value for honey pot field."
+msgstr ""
+
+#: aldryn_forms/forms.py:196
+msgid "Please provide CMS page for redirect."
+msgstr "Geef een CMS pagina op voor redirect."
+
+#: aldryn_forms/forms.py:201
+msgid "Please provide an absolute URL for redirect."
+msgstr "Geef een absolute URL op voor redirect"
+
+#: aldryn_forms/forms.py:248
+msgid "Min value can not be greater than max value."
+msgstr ""
+
+#: aldryn_forms/forms.py:257
+msgid "Min length"
+msgstr "Min lengte"
+
+#: aldryn_forms/forms.py:258
+msgid "Required number of characters to type."
+msgstr "Benodigd aantal in te typen karakters."
+
+#: aldryn_forms/forms.py:260
+msgid "Max length"
+msgstr "Max lengte"
+
+#: aldryn_forms/forms.py:261
+msgid "Maximum number of characters to type."
+msgstr "Maximaal benodigd aantal in te typen karakters."
+
+#: aldryn_forms/forms.py:301
+msgid ""
+"Explanatory text displayed next to input field. Just like this one. You can "
+"use MAXSIZE as a placeholder for the maximum size configured below."
+msgstr ""
+"Uitleg die wordt getoond naast het veld. Net zo als deze tekst. Je kunt "
+"MAXSIZE gebruiken als placeholder voor de maximum grootte zoals hieronder "
+"geconfigureerd."
+
+#: aldryn_forms/forms.py:314
+msgid ""
+"Explanatory text displayed next to input field. Just like this one. You can "
+"use MAXSIZE, MAXWIDTH, MAXHEIGHT as a placeholders for the maximum file size "
+"and dimensions configured below."
+msgstr ""
+"Uitleg die wordt getoond naast het input veld. Net zo als deze tekst. Je "
+"kunt MAXSIZE, MAXWIDTH, MAXHEIGHT gebruiken als placeholder voor de maximum "
+"bestandsgrootte en dimansies zoals hieronder geconfigureerd."
+
+#: aldryn_forms/forms.py:338
+msgid "Min choices"
+msgstr "Min keuzes"
+
+#: aldryn_forms/forms.py:339
+msgid "Required amount of elements to chose."
+msgstr "Benodigde aantal elementen om te kiezen."
+
+#: aldryn_forms/forms.py:341
+msgid "Max choices"
+msgstr "Max keuzes"
+
+#: aldryn_forms/forms.py:342
+msgid "Maximum amount of elements to chose."
+msgstr "Maximale aantal elementen om te kiezen."
+
+#: aldryn_forms/models.py:106 aldryn_forms/models.py:170
+msgid "CMS Page"
+msgstr "CMS Pagina"
+
+#: aldryn_forms/models.py:107 aldryn_forms/models.py:138
+msgid "Absolute URL"
+msgstr "Absolute URL"
+
+#: aldryn_forms/models.py:114 aldryn_forms/models.py:352
+msgid "Name"
+msgstr "Naam"
+
+#: aldryn_forms/models.py:116
+msgid "Used to filter out form submissions."
+msgstr "Gebruikt om formulier inzendingen uit te filteren."
+
+#: aldryn_forms/models.py:119 aldryn_forms/models.py:360
+msgid "Error message"
+msgstr "Foutboodschap"
+
+#: aldryn_forms/models.py:122
+msgid "An error message that will be displayed if the form doesn't validate."
+msgstr ""
+"Een foutboodschap die wordt getoond als het formulier niet gevalideerd kan "
+"worden."
+
+#: aldryn_forms/models.py:126
+msgid "Success message"
+msgstr "Succesboodschap"
+
+#: aldryn_forms/models.py:129
+msgid "An success message that will be displayed."
+msgstr "Een succesboodschap die wordt getoond."
+
+#: aldryn_forms/models.py:132
+msgid "Redirect to"
+msgstr "Redirect naar"
+
+#: aldryn_forms/models.py:135
+msgid "Where to redirect the user when the form has been successfully sent?"
+msgstr ""
+"Waarheen moet de gebruiker worden geredirect als het formulier succesvol "
+"verzonden is?"
+
+#: aldryn_forms/models.py:140 aldryn_forms/models.py:340
+#: aldryn_forms/models.py:407 aldryn_forms/models.py:536
+msgid "custom css classes"
+msgstr "custom css classes"
+
+#: aldryn_forms/models.py:142
+msgid "form template"
+msgstr "formulier template"
+
+#: aldryn_forms/models.py:154
+msgid "People who will get the form content via e-mail."
+msgstr "Mensen die de inhoud van het formulier krijgen via e-mail."
+
+#: aldryn_forms/models.py:158
+msgid "Action backend"
+msgstr ""
+
+#: aldryn_forms/models.py:165 aldryn_forms/models.py:381
+msgid "Attributes"
+msgstr ""
+
+#: aldryn_forms/models.py:338
+msgid "Legend"
+msgstr "Legenda"
+
+#: aldryn_forms/models.py:354
+msgid "Used to set the field name"
+msgstr ""
+
+#: aldryn_forms/models.py:357 aldryn_forms/models.py:534
+#: aldryn_forms/templates/admin/aldryn_forms/display/submission_data.html:4
+msgid "Label"
+msgstr "Label"
+
+#: aldryn_forms/models.py:358
+msgid "Field is required"
+msgstr "Veld is verplicht"
+
+#: aldryn_forms/models.py:363
+msgid ""
+"Error message displayed if the required field is left empty. Default: \"This "
+"field is required\"."
+msgstr ""
+"Foutboodschap die wordt getoond als een verplicht veld leeggelaten wordt. "
+"Default: \"This field is required\"."
+
+#: aldryn_forms/models.py:367
+msgid "Placeholder text"
+msgstr "Placeholder tekst"
+
+#: aldryn_forms/models.py:370
+msgid ""
+"Default text in a form. Disappears when user starts typing. Example: "
+"\"email@example.com\""
+msgstr ""
+
+#: aldryn_forms/models.py:374
+msgid "Help text"
+msgstr "Help tekst"
+
+#: aldryn_forms/models.py:377
+msgid "Explanatory text displayed next to input field. Just like this one."
+msgstr "Uitleg die wordt getoond naast het input veld. Net zo als deze tekst. "
+
+#: aldryn_forms/models.py:389
+msgid "Min value"
+msgstr "Min waarde"
+
+#: aldryn_forms/models.py:395
+msgid "Max value"
+msgstr "Max waarde"
+
+#: aldryn_forms/models.py:400
+#, fuzzy
+#| msgid "Min value"
+msgid "Initial value"
+msgstr "Min waarde"
+
+#: aldryn_forms/models.py:403
+msgid "Default value of field."
+msgstr ""
+
+#: aldryn_forms/models.py:442
+msgid "columns"
+msgstr "kolommen"
+
+#: aldryn_forms/models.py:444
+msgid "rows"
+msgstr "rijen"
+
+#: aldryn_forms/models.py:449
+msgid "send notification when form is submitted"
+msgstr ""
+
+#: aldryn_forms/models.py:451
+msgid ""
+"When checked, the value of this field will be used to send an email "
+"notification."
+msgstr ""
+"Als dit is aangevinkt, zal de waarde van dit veld worden gebruikt om een e-"
+"mail notificatie te zenden."
+
+#: aldryn_forms/models.py:455
+msgid "email subject"
+msgstr "email onderwerp"
+
+#: aldryn_forms/models.py:459
+msgid "Used as the email subject when email_send_notification is checked."
+msgstr ""
+"Gebruikt als email onderwerp als \"email verzonden notificatie\" is "
+"aangevinkt."
+
+#: aldryn_forms/models.py:463
+msgid "Additional email body"
+msgstr "Additionele email body"
+
+#: aldryn_forms/models.py:466
+msgid "Additional body text used when email notifications are active."
+msgstr "Additionele email body als email notificaties actief zijn"
+
+#: aldryn_forms/models.py:473
+msgid "Upload files to"
+msgstr "Upload bestanden naar"
+
+#: aldryn_forms/models.py:474
+msgid ""
+"Select a folder to which all files submitted through this field will be "
+"uploaded to."
+msgstr ""
+"Selecteer een folder waarheen alle bestanden in dit veld worden geupload."
+
+#: aldryn_forms/models.py:479
+msgid "Maximum file size"
+msgstr "Maximum bestandsgrootte"
+
+#: aldryn_forms/models.py:481
+msgid ""
+"The maximum file size of the upload, in bytes. You can use common size "
+"suffixes (kB, MB, GB, ...)."
+msgstr ""
+"De maximum bestandsgrootte van de upload, in bytes, U kunt bekende "
+"achtervoegsels gebruiken (kB, MB, GB, ...)."
+
+#: aldryn_forms/models.py:495
+msgid "Maximum image width"
+msgstr "Maximale afbeeldingsbreedte"
+
+#: aldryn_forms/models.py:497
+msgid "The maximum width of the uploaded image, in pixels."
+msgstr "De maximale breedte van de geuploade afbeeldingen, in pixels."
+
+#: aldryn_forms/models.py:500
+msgid "Maximum image height"
+msgstr "Maximale afbeeldingshoogte"
+
+#: aldryn_forms/models.py:502
+msgid "The maximum height of the uploaded image, in pixels."
+msgstr "De maximale hoogte van de geuploade afbeeldingen, in pixels."
+
+#: aldryn_forms/models.py:509
+#: aldryn_forms/templates/admin/aldryn_forms/display/submission_data.html:5
+msgid "Value"
+msgstr "Waarde"
+
+#: aldryn_forms/models.py:511
+msgid "Position"
+msgstr ""
+
+#: aldryn_forms/models.py:514
+msgid "Option"
+msgstr ""
+
+#: aldryn_forms/models.py:515
+msgid "Options"
+msgstr ""
+
+#: aldryn_forms/models.py:549
+msgid "form name"
+msgstr "formulier naam"
+
+#: aldryn_forms/models.py:555
+msgid "users notified"
+msgstr "op de hoogte gestelde gebruikers"
+
+#: aldryn_forms/models.py:557
+msgid "People who got a notification when form was submitted."
+msgstr ""
+"Mensen die op de hoogte worden gesteld als een formulier verzonden wordt."
+
+#: aldryn_forms/models.py:561
+msgid "form language"
+msgstr "formulier taal"
+
+#: aldryn_forms/models.py:567
+msgid "form url"
+msgstr "formulier url"
+
+#: aldryn_forms/models.py:575
+msgid "Form submission"
+msgstr "Formulier verzending"
+
+#: aldryn_forms/models.py:576
+msgid "Form submissions"
+msgstr "Formulier verzendingen"
+
+#: aldryn_forms/sizefield/models.py:11
+msgid "Incorrect file size format."
+msgstr ""
+
+#: aldryn_forms/sizefield/utils.py:82
+#, python-format
+msgid "Size '%s' has incorrect format"
+msgstr ""
+
+#: aldryn_forms/templates/admin/aldryn_forms/display/submission_data.html:3
+msgid "Field"
+msgstr "Veld"
+
+#: aldryn_forms/templates/admin/aldryn_forms/export.html:5
+msgid "Export form submissions"
+msgstr "Exporteer formulier inzendingen"
+
+#: aldryn_forms/templates/admin/aldryn_forms/export.html:8
+msgid "Please correct the error below."
+msgid_plural "Please correct the errors below."
+msgstr[0] "Verbeter de fout hieronder."
+msgstr[1] "Verbeter de fouten hieronder."
+
+#: aldryn_forms/templates/admin/aldryn_forms/export.html:30
+#: aldryn_forms/templates/admin/aldryn_forms/export_wizard.html:11
+msgid "Export"
+msgstr "Exporteer"
+
+#: aldryn_forms/templates/admin/aldryn_forms/export_wizard.html:13
+msgid "Continue"
+msgstr "Ga door"
+
+#: aldryn_forms/templates/admin/aldryn_forms/formsubmission/change_list.html:9
+msgid "Export Form Entries"
+msgstr "Exporteer formulier inzendingen"
+
+#: aldryn_forms/templates/aldryn_forms/email_notifications/emails/notification.body.html:9
+#: aldryn_forms/templates/aldryn_forms/email_notifications/emails/notification.body.txt:8
+#: aldryn_forms/templates/aldryn_forms/emails/notification.body.html:3
+#: aldryn_forms/templates/aldryn_forms/emails/notification.body.txt:2
+#: aldryn_forms/templates/aldryn_forms/emails/user/notification.body.txt:7
+#, python-format
+msgid "Form name: %(form_name)s"
+msgstr "Formuliernaam: %(form_name)s"
+
+#: aldryn_forms/templates/aldryn_forms/email_notifications/emails/notification.subject.txt:1
+#: aldryn_forms/templates/aldryn_forms/emails/notification.subject.txt:1
+#: aldryn_forms/templates/aldryn_forms/emails/user/notification.subject.txt:1
+#, python-format
+msgid "[Form submission] %(form_name)s"
+msgstr "[Formulier inzending] %(form_name)s"
+
+#: aldryn_forms/templates/aldryn_forms/field.html:14
+#: aldryn_forms/templates/aldryn_forms/fields/lemoncup.html:13
+#: aldryn_forms/templates/aldryn_forms/fields/multiplecheckboxselectfield.html:9
+msgid "Required field"
+msgstr "Verplicht veld"
+
+#: aldryn_forms/templates/aldryn_forms/form.html:19
+#, fuzzy, python-format
+#| msgid ""
+#| "Thank you for submitting your information, you will be <a href="
+#| "\"%(form_success_url)s\">redirected shortly</a>."
+msgid "You will be <a href=\"%(form_success_url)s\">redirected shortly</a>."
+msgstr ""
+"Dank u voor het verzenden van uw informatie. U wordt spoedig <a href="
+"\"%(form_success_url)s\">doorgeleid</a>."
+
+#: aldryn_forms/templates/aldryn_forms/form.html:23
+msgid "Thank you for submitting your information."
+msgstr ""
+
+#: aldryn_forms/validators.py:33
+#, python-format
+msgid ""
+"You have to choose at least %(limit_value)d options (chosen %(show_value)d)."
+msgstr ""
+"U moet minstens %(limit_value)d opties kiezen (gekozen %(show_value)d)."
+
+#: aldryn_forms/validators.py:39
+#, python-format
+msgid ""
+"You can't choose more than %(limit_value)d options (chosen %(show_value)d)."
+msgstr ""
+"U kunt niet meer dan %(limit_value)d opties kiezen (gekozen %(show_value)d)."
+
+#, python-format
+#~ msgid ""
+#~ "\n"
+#~ "                Thank you for submitting your information, you will be\n"
+#~ "                <a href=\"%(form_success_url)s\">redirected shortly</a>.\n"
+#~ "            "
+#~ msgstr ""
+#~ "\n"
+#~ "Bedankt voor het verzenden van de informatie, u wordt\n"
+#~ "<a href=\"%(form_success_url)s\">spoedig doorgeleid</a>"
+
+#~ msgid ""
+#~ "\n"
+#~ "                Please correct the error below."
+#~ msgid_plural ""
+#~ "Please correct the errors below.\n"
+#~ "            "
+#~ msgstr[0] ""
+#~ "\n"
+#~ "                Verbeter de fouten hieronder."
+#~ msgstr[1] ""
+#~ "Verbeter de fouten hieronder.\n"
+#~ "            "

@@ -1,0 +1,11 @@
+{% load i18n aldryn_forms_tags %}
+
+{% if field %}
+    {% comment %}
+        {# available conditions #}
+        {% if field.field.required %} required{% endif %}
+        {% if field.errors %} error{% endif %}
+    {% endcomment %}
+
+    {% render_form_widget field class=instance.custom_classes %}
+{% endif %}
