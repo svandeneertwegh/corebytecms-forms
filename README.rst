@@ -2,7 +2,8 @@ Installation
 ===========
 
 Run ``pip install git+https://github.com/svandeneertwegh/djangocms-formbuilder``.
-And also ``pip install aldryn-forms-recaptcha-plugin`
+
+And also ``pip install aldryn-forms-recaptcha-plugin``.
 
 Update ``INSTALLED_APPS`` with ::
 
