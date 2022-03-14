@@ -1,49 +1,8 @@
-================
-Aldryn Forms App
-================
-
-Aldryn Forms allows you to build flexible HTML forms for your `Aldryn <http://aldryn.com>`_ and `django CMS
-<http://www.django-cms.org>`_ projects, and to integrate them directly in your pages.
-
-Forms can be assembled using the form builder, with the familiar simple drag-and-drop interface of the django CMS
-plugin system.
-
-Submitted data is stored in the Django database, and can be explored and exported using the admin, while forms can
-be configured to send a confirmation message to users.
-
-Contributing
-============
-
-This is a an open-source project. We'll be delighted to receive your
-feedback in the form of issues and pull requests. Before submitting your
-pull request, please review our `contribution guidelines
-<http://docs.django-cms.org/en/latest/contributing/index.html>`_.
-
-We're grateful to all contributors who have helped create and maintain this package.
-Contributors are listed at the `contributors <https://github.com/divio/aldryn-forms/graphs/contributors>`_
-section.
-
 Installation
-============
+===========
 
-Aldryn Platform Users
----------------------
-
-Choose a site you want to install the add-on to from the dashboard. Then go to ``Apps -> Install app`` and click ``Install`` next to ``Forms`` app.
-
-Redeploy the site.
-
-Upgrading from < 2.0
-====================
-Version 2.0 introduced a new model for form data storage called ``FormSubmission``.
-The old ``FormData`` model has been deprecated.
-Although the ``FormData`` model's data is still accessible through the admin, all new form data will be stored in the new
-``FormSubmission`` model.
-
-Manuall Installation
---------------------
-
-Run ``pip install aldryn-forms``.
+Run ``pip install git+https://github.com/svandeneertwegh/djangocms-formbuilder``.
+And also ``pip install aldryn-forms-recaptcha-plugin`
 
 Update ``INSTALLED_APPS`` with ::
 
@@ -54,6 +13,8 @@ Update ``INSTALLED_APPS`` with ::
         'aldryn_forms.contrib.email_notifications',
         'emailit',
         'filer',
+
+        'aldryn_forms_recaptcha_plugin',
         ...
     ]
 
@@ -98,3 +59,6 @@ Available Plug-ins
 ``File field`` renders a file upload input.
 
 ``Image field`` same as ``file field`` but validates that the uploaded file is an image.
+
+
+Based on aldryn-forms package.
