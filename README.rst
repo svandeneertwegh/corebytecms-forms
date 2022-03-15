@@ -16,8 +16,14 @@ Update ``INSTALLED_APPS`` with ::
         'filer',
 
         'aldryn_forms_recaptcha_plugin',
+        'snowpenguin.django.recaptcha3',  # must be below the plugin
         ...
     ]
+    
+    RECAPTCHA_PUBLIC_KEY = env('RECAPTCHA_PRIVATE_KEY', '123')
+    RECAPTCHA_PRIVATE_KEY = env('RECAPTCHA_PRIVATE_KEY', '123') 
+    # set this to 0 (or 1) to deactivate (or always activate) the captcha protection
+    RECAPTCHA_SCORE_THRESHOLD = 0.85
 
 Configure ``aldryn-boilerplates`` (https://pypi.python.org/pypi/aldryn-boilerplates/).
 
