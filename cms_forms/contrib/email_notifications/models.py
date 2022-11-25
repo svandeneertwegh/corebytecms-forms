@@ -12,6 +12,7 @@ from emailit.api import construct_mail
 
 from cms_forms.helpers import get_user_name
 from cms_forms.models import FormPlugin
+
 from .helpers import (
     get_email_template_name, get_theme_template_name, render_text,
 )

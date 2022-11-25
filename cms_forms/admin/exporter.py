@@ -22,7 +22,7 @@ class Exporter(object):
                 else:
                     row_data.append('')
 
-            row_data.append(submission.sent_at.strftime(f"%d-%m-%Y %H:%M:%S"))
+            row_data.append(submission.sent_at.strftime("%d-%m-%Y %H:%M:%S"))
 
             pd_data.append(row_data)
 

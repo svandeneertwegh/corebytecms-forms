@@ -1,7 +1,6 @@
 import json
 import warnings
-from collections import defaultdict
-from collections import namedtuple
+from collections import defaultdict, namedtuple
 from functools import partial
 from typing import List
 
@@ -20,6 +19,7 @@ from six import text_type
 from .compat import build_plugin_tree
 from .helpers import is_form_element
 from .sizefield.models import FileSizeField
+
 from .utils import FORMS_ACTION_BACKEND_KEY_MAX_SIZE
 from .utils import action_backend_choices
 
