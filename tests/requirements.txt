@@ -7,4 +7,4 @@ flake8
 isort
 django-simple-captcha
 django-sizefield==2.0.0
-wheel==0.37.1
+django==3.2.0
