@@ -3,8 +3,6 @@ Installation
 
 Run ``pip install git+https://github.com/svandeneertwegh/djangocms-formbuilder``.
 
-And also ``pip install aldryn-forms-recaptcha-plugin``.
-
 Update ``INSTALLED_APPS`` with ::
 
     INSTALLED_APPS = [
@@ -14,30 +12,13 @@ Update ``INSTALLED_APPS`` with ::
         'aldryn_forms.contrib.email_notifications',
         'emailit',
         'filer',
-
-        'aldryn_forms_recaptcha_plugin',
-        'snowpenguin.django.recaptcha3',  # must be below the plugin
-        ...
     ]
-    
-    RECAPTCHA_PUBLIC_KEY = env('RECAPTCHA_PRIVATE_KEY', '123')
-    RECAPTCHA_PRIVATE_KEY = env('RECAPTCHA_PRIVATE_KEY', '123') 
-    # set this to 0 (or 1) to deactivate (or always activate) the captcha protection
-    RECAPTCHA_SCORE_THRESHOLD = 0.85
-
-Configure ``aldryn-boilerplates`` (https://pypi.python.org/pypi/aldryn-boilerplates/).
-
-To use the old templates, set ``ALDRYN_BOILERPLATE_NAME='legacy'``.
-To use https://github.com/aldryn/aldryn-boilerplate-standard (recommended, will be renamed to
-``aldryn-boilerplate-bootstrap3``) set ``ALDRYN_BOILERPLATE_NAME='bootstrap3'``.
-
-Also ensure you define an `e-mail backend <https://docs.djangoproject.com/en/dev/topics/email/#dummy-backend>`_ for your app.
 
 
 Creating a Form
 ===============
 
-You can create forms in the admin interface now. Search for the label ``Aldryn_Forms``.
+You can create forms in the admin interface now. Search for the label ``Forms``.
 
 Create a CMS page and install the ``Forms`` app there (choose ``Forms`` from the ``Advanced Settings -> Application`` dropdown).
 
@@ -61,11 +42,11 @@ Available Plug-ins
 
 ``Select Field`` renders single select input.
 
+``Date Field`` renders date input.
+
 ``Multiple Select Field`` renders multiple checkboxes.
 
 ``File field`` renders a file upload input.
 
 ``Image field`` same as ``file field`` but validates that the uploaded file is an image.
 
-
-Based on aldryn-forms package.

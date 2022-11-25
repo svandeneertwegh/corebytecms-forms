@@ -10,7 +10,7 @@ class FormSubmissionAdmin(BaseFormSubmissionAdmin):
     readonly_fields = BaseFormSubmissionAdmin.readonly_fields + ['form_url']
 
     def get_form_export_view(self):
-        return FormExportWizardView.as_view(admin=self, file_type='xls')
+        return FormExportWizardView.as_view(admin=self, file_type='csv')
 
 
 admin.site.register(FormSubmission, FormSubmissionAdmin)

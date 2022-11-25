@@ -542,7 +542,6 @@ class FormButtonPlugin(CMSPlugin):
         return self.label
 
 
-
 class FormSubmission(models.Model):
     name = models.CharField(
         max_length=255,

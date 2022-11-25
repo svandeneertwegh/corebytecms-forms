@@ -94,6 +94,9 @@ class FormExportWizardView(SessionWizardView):
         filename = step_1_form.get_filename(extension=self.file_type)
 
         content_type = self.get_content_type()
-        response = HttpResponse(dataset.xls, content_type=content_type)
-        response['Content-Disposition'] = 'attachment; filename=%s' % filename
+        print(content_type)
+
+        response = HttpResponse(content_type=content_type)
+        response['Content-Disposition'] = f'attachment; filename={filename}'
+        dataset.to_csv(response, sep=',')
         return response

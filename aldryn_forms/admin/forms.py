@@ -27,7 +27,7 @@ def form_field_choices(fields):
 
 class BaseFormExportForm(forms.Form):
     excel_limit = 65536
-    export_filename = 'export-{language}-{form_name}-%Y-%m-%d'
+    export_filename = 'export-{language}-{form_name}-%d-%m-%Y'
 
     form_name = forms.ChoiceField(choices=[])
     from_date = forms.DateField(

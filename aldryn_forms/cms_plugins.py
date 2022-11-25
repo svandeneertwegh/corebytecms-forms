@@ -50,7 +50,7 @@ from .validators import is_valid_recipient
 
 class FormElement(CMSPluginBase):
     # Don't cache anything.
-    cache = False
+    cache = True
     module = _('Forms')
 
 
@@ -557,6 +557,11 @@ class PhoneField(BaseTextField):
     form_field_widget_input_type = 'phone'
 
 
+class DateField(BaseTextField):
+    name = _('Date Field')
+    form_field_widget_input_type = 'date'
+
+
 class NumberField(BaseTextField):
     name = _('Number Field')
     form_field_widget_input_type = 'number'
@@ -930,6 +935,7 @@ plugin_pool.register_plugin(FileField)
 plugin_pool.register_plugin(HiddenField)
 plugin_pool.register_plugin(PhoneField)
 plugin_pool.register_plugin(NumberField)
+plugin_pool.register_plugin(DateField)
 plugin_pool.register_plugin(ImageField)
 plugin_pool.register_plugin(Fieldset)
 plugin_pool.register_plugin(FormPlugin)

@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 from django.http import HttpResponseBadRequest, HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import resolve
@@ -38,7 +37,18 @@ def submit_form_view(request):
             # I believe this could be an issue as we don't check if the form submitted
             # is in anyway tied to this page.
             # But then we have a problem with static placeholders :(
-            form_plugin = get_plugin_tree(FormPlugin, pk=form_plugin_id)
+
+            # form_plugin = get_plugin_tree(FormPlugin, pk=form_plugin_id)
+
+            #  TODO quick fix below
+
+            form_plugin = FormPlugin.objects.get(pk=form_plugin_id)
+            plugin_list = [form_plugin]
+            all_descendants = list(form_plugin.get_descendants())
+            for desc in all_descendants:
+                if 'Field' in str(desc.plugin_type):
+                    plugin_list.append(desc)
+
         except FormPlugin.DoesNotExist:
             return HttpResponseBadRequest()
 

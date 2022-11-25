@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-12 13:37+0100\n"
+"POT-Creation-Date: 2022-11-21 12:40+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Angelo Dini <finalangeljp@hotmail.com>, 2016\n"
 "Language-Team: Dutch (https://www.transifex.com/divio/teams/58664/nl/)\n"
@@ -30,6 +30,9 @@ msgstr "Default"
 #| msgid "Email Field"
 msgid "Email only"
 msgstr "Email Veld"
+
+msgid "Date Field"
+msgstr "Datum Veld"
 
 #: aldryn_forms/action_backends.py:31
 msgid "None"
@@ -73,113 +76,119 @@ msgid "No records found"
 msgstr "Geen records gevonden"
 
 #: aldryn_forms/apps.py:7 aldryn_forms/cms_apps.py:9
-#: aldryn_forms/cms_plugins.py:53
+#: aldryn_forms/cms_plugins.py:54
 msgid "Forms"
 msgstr "Formulieren"
 
-#: aldryn_forms/cms_plugins.py:62
+#: aldryn_forms/cms_plugins.py:63
 msgid "Form"
 msgstr "Formulier"
 
-#: aldryn_forms/cms_plugins.py:63
+#: aldryn_forms/cms_plugins.py:64
 #, fuzzy
 #| msgid "Form fields"
 msgid "Form types"
 msgstr "Formulier velden"
 
-#: aldryn_forms/cms_plugins.py:77 aldryn_forms/cms_plugins.py:252
-#: aldryn_forms/cms_plugins.py:427
+#: aldryn_forms/cms_plugins.py:78 aldryn_forms/cms_plugins.py:254
+#: aldryn_forms/cms_plugins.py:429
 #: aldryn_forms/contrib/email_notifications/cms_plugins.py:137
 msgid "Advanced Settings"
 msgstr "Geavanceerde Settings"
 
-#: aldryn_forms/cms_plugins.py:214
+#: aldryn_forms/cms_plugins.py:216
 msgid "The form has been sent."
 msgstr "Het formulier is verzonden."
 
-#: aldryn_forms/cms_plugins.py:243
+#: aldryn_forms/cms_plugins.py:245
 msgid "Fieldset"
 msgstr "Fieldset"
 
-#: aldryn_forms/cms_plugins.py:280
+#: aldryn_forms/cms_plugins.py:282
 msgid "Form fields"
 msgstr "Formulier velden"
 
-#: aldryn_forms/cms_plugins.py:501
+#: aldryn_forms/cms_plugins.py:503
 msgid "Text Field"
 msgstr "Tekst Veld"
 
-#: aldryn_forms/cms_plugins.py:505
+#: aldryn_forms/cms_plugins.py:507
 msgid "Text Area Field"
 msgstr "Text Area Veld"
 
-#: aldryn_forms/cms_plugins.py:546
+#: aldryn_forms/cms_plugins.py:548
 #, fuzzy
 #| msgid "Text Field"
 msgid "Hidden Field"
 msgstr "Tekst Veld"
 
-#: aldryn_forms/cms_plugins.py:554
+#: aldryn_forms/cms_plugins.py:556
 #, fuzzy
 #| msgid "Text Field"
 msgid "Phone Field"
 msgstr "Tekst Veld"
 
-#: aldryn_forms/cms_plugins.py:559
+#: aldryn_forms/cms_plugins.py:561
+#, fuzzy
+#| msgid "Text Field"
+msgid "Date Field"
+msgstr "Tekst Veld"
+
+#: aldryn_forms/cms_plugins.py:566
 #, fuzzy
 #| msgid "Text Field"
 msgid "Number Field"
 msgstr "Tekst Veld"
 
-#: aldryn_forms/cms_plugins.py:564
+#: aldryn_forms/cms_plugins.py:571
 msgid "Email Field"
 msgstr "Email Veld"
 
-#: aldryn_forms/cms_plugins.py:600
+#: aldryn_forms/cms_plugins.py:607
 msgid "File upload field"
 msgstr "Bestand upload veld"
 
-#: aldryn_forms/cms_plugins.py:680
+#: aldryn_forms/cms_plugins.py:687
 msgid "Image upload field"
 msgstr "Afbeelding upload veld"
 
-#: aldryn_forms/cms_plugins.py:718
+#: aldryn_forms/cms_plugins.py:725
 msgid "Yes/No Field"
 msgstr "Ja/Nee Veld"
 
-#: aldryn_forms/cms_plugins.py:742
+#: aldryn_forms/cms_plugins.py:749
 msgid "Yes"
 msgstr "Ja"
 
-#: aldryn_forms/cms_plugins.py:742
+#: aldryn_forms/cms_plugins.py:749
 msgid "No"
 msgstr "Nee"
 
-#: aldryn_forms/cms_plugins.py:750
+#: aldryn_forms/cms_plugins.py:757
 msgid "Select Field"
 msgstr "Select Veld"
 
-#: aldryn_forms/cms_plugins.py:786
+#: aldryn_forms/cms_plugins.py:793
 msgid "Multiple Select Field"
 msgstr "Multiple Select Veld"
 
-#: aldryn_forms/cms_plugins.py:825
+#: aldryn_forms/cms_plugins.py:832
 msgid "Multiple Checkbox Field"
 msgstr ""
 
-#: aldryn_forms/cms_plugins.py:829
+#: aldryn_forms/cms_plugins.py:836
 msgid "Radio Select Field"
 msgstr "Radio Select Veld"
 
-#: aldryn_forms/cms_plugins.py:872
+#: aldryn_forms/cms_plugins.py:879
 msgid "Captcha Field"
 msgstr "Captcha Veld"
 
-#: aldryn_forms/cms_plugins.py:892
+#: aldryn_forms/cms_plugins.py:899
 msgid "Honeypot Captcha"
 msgstr ""
 
-#: aldryn_forms/cms_plugins.py:921
+#: aldryn_forms/cms_plugins.py:928
 msgid "Submit Button"
 msgstr "Verzend Knop"
 
@@ -681,12 +690,12 @@ msgstr "Verplicht veld"
 #: aldryn_forms/templates/aldryn_forms/form.html:19
 #, fuzzy, python-format
 #| msgid ""
-#| "Thank you for submitting your information, you will be <a href="
-#| "\"%(form_success_url)s\">redirected shortly</a>."
+#| "Thank you for submitting your information, you will be <a "
+#| "href=\"%(form_success_url)s\">redirected shortly</a>."
 msgid "You will be <a href=\"%(form_success_url)s\">redirected shortly</a>."
 msgstr ""
-"Dank u voor het verzenden van uw informatie. U wordt spoedig <a href="
-"\"%(form_success_url)s\">doorgeleid</a>."
+"Dank u voor het verzenden van uw informatie. U wordt spoedig <a "
+"href=\"%(form_success_url)s\">doorgeleid</a>."
 
 #: aldryn_forms/templates/aldryn_forms/form.html:23
 msgid "Thank you for submitting your information."

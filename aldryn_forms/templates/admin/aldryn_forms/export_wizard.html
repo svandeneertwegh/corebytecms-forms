@@ -8,7 +8,7 @@
 
 {% block aldryn_form_buttons %}
     {% if wizard.steps.current == wizard.steps.last %}
-        <input type="submit" class="default" value="{% trans 'Export' %}" />
+        <input type="submit" value="{% trans 'Export' %}" />
     {% else %}
         <input type="submit" class="default" value="{% trans 'Continue' %}" />
     {% endif %}

@@ -63,7 +63,7 @@ class ExistingEmailNotificationInline(admin.StackedInline):
     text_variables_help_text = _('variables can be used with by '
                                  'wrapping with "${variable}" like ${variable}')
 
-    def has_add_permission(self, request):
+    def has_module_permission(self, request):
         return False
 
     def get_fieldsets(self, request, obj=None):

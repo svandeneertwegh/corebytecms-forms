@@ -1,16 +1,15 @@
-from django.utils.translation import ugettext_lazy as _
-from tablib import Dataset
+import pandas as pd
+from django.conf import settings
 
 
 class Exporter(object):
-
     def __init__(self, queryset):
         self.queryset = queryset
 
     def get_dataset(self, fields):
         headers = [field.rpartition('-')[0] for field in fields]
-        headers.append(str(_('Date')))
-        dataset = Dataset(headers=headers)
+        headers.append(str('Datum en tijd'))
+        pd_data = []
         for submission in self.queryset.only('data').iterator():
             row_data = []
             form_fields = [field for field in submission.get_form_data()
@@ -24,11 +23,12 @@ class Exporter(object):
                 else:
                     row_data.append('')
 
-            row_data.append(submission.sent_at.isoformat())
+            row_data.append(submission.sent_at.strftime(f"{settings.DATE_FORMAT} %H:%M:%S"))
 
-            if row_data:
-                dataset.append(row_data)
-        return dataset
+            pd_data.append(row_data)
+
+        df = pd.DataFrame(pd_data, columns=headers)
+        return df
 
     def get_fields_for_export(self):
         old_fields = []
@@ -56,4 +56,5 @@ class Exporter(object):
                 if (field_id not in old_field_ids) and (field_id not in latest_field_ids):
                     old_fields.append(field)
                     old_field_ids.append(field_id)
-        return (latest_fields, old_fields)
+
+        return latest_fields, old_fields
