@@ -1,4 +1,4 @@
-
+```
 CMS_FORMS_IS_HONEYPOT_CAPTCHA_ENABLED = True
 CMS_FORMS_SHOW_ALL_RECIPIENTS = False
 # CMS_FORMS_TEMPLATES = ((DEFAULT_FORM_TEMPLATE, _('Default')),)
@@ -9,3 +9,4 @@ CMS_FORMS_ACTION_BACKENDS = {
     'none': 'cms_forms.action_backends.NoAction',
 }
 CMS_FORMS_EMAIL_THEMES = [('default', _('default'))]
+```
