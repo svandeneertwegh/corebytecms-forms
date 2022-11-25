@@ -4,9 +4,8 @@ from cms_forms import __version__
 
 
 REQUIREMENTS = [
-    'django>=2.0',
+    'django>=2.0<4',
     'django-cms>=3.5',
-    'django-emailit',
     'djangocms-text-ckeditor',
     'djangocms-attributes-field>=1.0.0',
     'pandas',

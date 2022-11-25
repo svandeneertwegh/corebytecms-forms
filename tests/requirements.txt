@@ -1,10 +1,10 @@
 djangocms-helper==1.2.5
 tox
 coverage
-django-polymorphic
+django-polymorphic==3.1.0
 djangocms-text-ckeditor>=3.7.0
 flake8
 isort
-django-simple-captcha
+django-simple-captcha==0.5.17
 django-sizefield==2.0.0
 django==3.2.0

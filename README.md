@@ -21,7 +21,6 @@ Update ``INSTALLED_APPS`` with ::
         'absolute',
         'cms_forms',
         'cms_forms.contrib.email_notifications',
-        'emailit',
         'filer',
     ]
 
