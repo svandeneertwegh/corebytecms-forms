@@ -1,11 +1,13 @@
 # -*- coding: utf-8 -*-
 from email.utils import formataddr
 
-import six
 from django.contrib import admin
 from django.template.loader import render_to_string
 from django.urls import reverse
 from django.utils.translation import ugettext_lazy as _
+
+import six
+
 
 if six.PY2:
     str_dunder_method = '__unicode__'

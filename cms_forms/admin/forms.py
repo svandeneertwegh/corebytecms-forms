@@ -9,8 +9,8 @@ from django.utils.text import slugify
 from django.utils.translation import ugettext
 from django.utils.translation import ugettext_lazy as _
 
-from .exporter import Exporter
 from ..models import FormSubmission
+from .exporter import Exporter
 
 
 def form_choices(modelClass):
