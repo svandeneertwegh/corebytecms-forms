@@ -1,8 +1,5 @@
 from typing import Dict
 
-from PIL import Image
-from cms.plugin_base import CMSPluginBase
-from cms.plugin_pool import plugin_pool
 from django import forms
 from django.contrib.admin import TabularInline
 from django.core.validators import MinLengthValidator
@@ -10,36 +7,29 @@ from django.db.models import query
 from django.template.loader import select_template
 from django.utils.translation import ugettext
 from django.utils.translation import ugettext_lazy as _
+
+from cms.plugin_base import CMSPluginBase
+from cms.plugin_pool import plugin_pool
+
 from emailit.api import send_mail
-from filer.models import filemodels
-from filer.models import imagemodels
+from filer.models import filemodels, imagemodels
+from PIL import Image
 
 from . import models
-from .forms import BooleanFieldForm
-from .forms import CaptchaFieldForm
-from .forms import EmailFieldForm
-from .forms import FileFieldForm
-from .forms import FormPluginForm
-from .forms import FormSubmissionBaseForm
-from .forms import HiddenFieldForm
-from .forms import ImageFieldForm
-from .forms import MultipleSelectFieldForm
-from .forms import RadioFieldForm
-from .forms import RestrictedFileField
-from .forms import RestrictedImageField
-from .forms import SelectFieldForm
-from .forms import TextAreaFieldForm
-from .forms import TextFieldForm
+from .forms import (
+    BooleanFieldForm, CaptchaFieldForm, EmailFieldForm, FileFieldForm,
+    FormPluginForm, FormSubmissionBaseForm, HiddenFieldForm, ImageFieldForm,
+    MultipleSelectFieldForm, RadioFieldForm, RestrictedFileField,
+    RestrictedImageField, SelectFieldForm, TextAreaFieldForm, TextFieldForm,
+)
 from .helpers import get_user_name
-from .models import FileUploadFieldPlugin
 from .models import SerializedFormField
-from .signals import form_post_save
-from .signals import form_pre_save
+from .signals import form_post_save, form_pre_save
 from .sizefield.utils import filesizeformat
 from .utils import get_action_backends
-from .validators import MaxChoicesValidator
-from .validators import MinChoicesValidator
-from .validators import is_valid_recipient
+from .validators import (
+    MaxChoicesValidator, MinChoicesValidator, is_valid_recipient,
+)
 
 
 class FormElement(CMSPluginBase):
