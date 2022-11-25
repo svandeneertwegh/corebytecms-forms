@@ -8,3 +8,4 @@ isort
 django-simple-captcha==0.5.17
 django-sizefield==2.0.0
 django==3.2.0
+wheel
