@@ -1,7 +1,6 @@
 import json
 import warnings
-from collections import defaultdict
-from collections import namedtuple
+from collections import defaultdict, namedtuple
 from functools import partial
 from typing import List
 
@@ -12,17 +11,15 @@ from django.conf import settings
 from django.db import models
 from django.db.models.functions import Coalesce
 from django.utils.functional import cached_property
-from six import text_type
 from django.utils.translation import ugettext_lazy as _
 from djangocms_attributes_field.fields import AttributesField
 from filer.fields.folder import FilerFolderField
+from six import text_type
 
 from .compat import build_plugin_tree
 from .helpers import is_form_element
 from .sizefield.models import FileSizeField
-from .utils import FORMS_ACTION_BACKEND_KEY_MAX_SIZE
-from .utils import action_backend_choices
-
+from .utils import FORMS_ACTION_BACKEND_KEY_MAX_SIZE, action_backend_choices
 
 AUTH_USER_MODEL = getattr(settings, 'AUTH_USER_MODEL', 'auth.User')
 
@@ -322,7 +319,6 @@ class BaseFormPlugin(CMSPlugin):
         return self._form_elements
 
 
-
 class FormPlugin(BaseFormPlugin):
 
     class Meta:
@@ -330,7 +326,6 @@ class FormPlugin(BaseFormPlugin):
 
     def __str__(self):
         return self.name
-
 
 
 class FieldsetPlugin(CMSPlugin):
@@ -344,7 +339,6 @@ class FieldsetPlugin(CMSPlugin):
 
     def __str__(self):
         return self.legend or text_type(self.pk)
-
 
 
 class FieldPluginBase(CMSPlugin):
@@ -503,7 +497,6 @@ class ImageUploadFieldPlugin(FileFieldPluginBase):
     )
 
 
-
 class Option(models.Model):
     field = models.ForeignKey(FieldPlugin, editable=False, on_delete=models.CASCADE)
     value = models.CharField(_('Value'), max_length=255)
@@ -527,7 +520,6 @@ class Option(models.Model):
     def save(self, *args, **kwargs):
         self.set_position()
         return super(Option, self).save(*args, **kwargs)
-
 
 
 class FormButtonPlugin(CMSPlugin):

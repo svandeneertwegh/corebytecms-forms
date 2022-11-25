@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-from django import get_version
 from django.contrib import messages
 from django.http import HttpResponse
 from django.shortcuts import redirect
@@ -8,7 +7,6 @@ from django.utils.translation import get_language_from_request, ugettext
 from ..compat import SessionWizardView
 from .exporter import Exporter
 from .forms import FormExportStep1Form, FormExportStep2Form
-
 
 mimetype_map = {
     'xls': 'application/vnd.ms-excel',

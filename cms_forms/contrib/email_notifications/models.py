@@ -7,17 +7,13 @@ from django.core.exceptions import ValidationError
 from django.db import models
 from django.utils.translation import ugettext
 from django.utils.translation import ugettext_lazy as _
-
 from djangocms_text_ckeditor.fields import HTMLField
 from emailit.api import construct_mail
 
 from cms_forms.helpers import get_user_name
 from cms_forms.models import FormPlugin
 
-from .helpers import (
-    get_email_template_name, get_theme_template_name, render_text,
-)
-
+from .helpers import get_email_template_name, get_theme_template_name, render_text
 
 EMAIL_THEMES = getattr(
     settings,
@@ -50,7 +46,6 @@ class EmailNotificationFormPlugin(FormPlugin):
         notification_conf = self.get_notification_conf()
         choices = notification_conf.get_context_keys_as_choices()
         return choices
-
 
 
 class EmailNotification(models.Model):

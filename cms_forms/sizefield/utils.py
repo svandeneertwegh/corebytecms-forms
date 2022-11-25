@@ -4,11 +4,10 @@ import operator
 import re
 import sys
 
+import six
 from django.conf import settings
 from django.utils import formats
-import six
 from django.utils.translation import ugettext as _
-
 
 if sys.version_info >= (3, 0):
     xrange = range

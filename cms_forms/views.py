@@ -3,8 +3,6 @@ from django.shortcuts import render
 from django.urls import resolve
 
 from .models import FormPlugin
-from .utils import get_plugin_tree
-
 
 try:
     from cms.utils.page import get_page_from_request
