@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from PIL import Image
 from django import forms
 from django.conf import settings
 from django.core.exceptions import ValidationError
@@ -6,8 +7,6 @@ from django.forms.forms import NON_FIELD_ERRORS
 from django.forms.utils import ErrorDict
 from django.utils.translation import ugettext
 from django.utils.translation import ugettext_lazy as _
-
-from PIL import Image
 
 from .models import FormPlugin, FormSubmission
 from .sizefield.utils import filesizeformat

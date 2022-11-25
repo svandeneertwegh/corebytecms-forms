@@ -4,7 +4,6 @@ from django.urls import resolve
 
 from .models import FormPlugin
 
-
 try:
     from cms.utils.page import get_page_from_request
 except ImportError:

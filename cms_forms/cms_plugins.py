@@ -1,5 +1,7 @@
 from typing import Dict
 
+from cms.plugin_base import CMSPluginBase
+from cms.plugin_pool import plugin_pool
 from django import forms
 from django.conf import settings
 from django.contrib import messages
@@ -11,16 +13,11 @@ from django.template.loader import select_template
 from django.utils.safestring import mark_safe
 from django.utils.translation import ugettext
 from django.utils.translation import ugettext_lazy as _
-
-from cms.plugin_base import CMSPluginBase
-from cms.plugin_pool import plugin_pool
-
 from emailit.api import send_mail
 from filer.models import filemodels, imagemodels
 from six import text_type
 
 from cms_forms.models import FormPlugin
-
 from . import models
 from .forms import (
     BooleanFieldForm, CaptchaFieldForm, EmailFieldForm, FileFieldForm,
