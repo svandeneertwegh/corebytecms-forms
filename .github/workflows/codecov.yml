@@ -31,7 +31,7 @@ jobs:
         python-version: ${{ matrix.python-version }}
     - name: Generate Report
       run: |
-        pip install -r tests/requirements/${{ matrix.requirements-file }}
+        pip install -r tests/${{ matrix.requirements-file }}
         coverage run setup.py test
     - name: Upload Coverage to Codecov
       uses: codecov/codecov-action@v3
