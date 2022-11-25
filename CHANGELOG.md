@@ -9,6 +9,7 @@
 
 ## BUGFIX
 - When adding form fields within mixed columns it now iterates and finds the form fields within.
+- Removed need of tablib and django-tablib, use now pandas to export to csv in the admin.
 
 ## CHANGES
 Stefan van den Eertwegh - added modifications.
