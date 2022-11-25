@@ -1,6 +1,4 @@
 # -*- coding: utf-8 -*-
-import premailer
-
 from django.conf import settings
 from django.contrib.sites.models import Site
 from django.core.mail import EmailMultiAlternatives
@@ -8,7 +6,10 @@ from django.template import TemplateDoesNotExist
 from django.template.loader import render_to_string
 from django.utils import translation
 
+import premailer
+
 from .utils import force_language, get_template_names
+
 
 basestring = str
 
