@@ -44,7 +44,7 @@ class SubmitFormViewTest(CMSTestCase):
             'redirect_type': 'redirect_to_url',
             'url': self.redirect_url,
         }
-        self.form_plugin = add_plugin(self.placeholder, 'FormPlugin', 'en', **plugin_data)  # noqa: E501
+        self.form_plugin = add_plugin(self.placeholder, 'FormParentPlugin', 'en', **plugin_data)  # noqa: E501
 
         add_plugin(
             self.placeholder,
@@ -101,7 +101,7 @@ class SubmitFormViewTest(CMSTestCase):
         public_page_form_plugin = (
             public_placeholder
             .cmsplugin_set
-            .filter(plugin_type='FormPlugin')
+            .filter(plugin_type='FormParentPlugin')
             .first()
         )
         response = self.client.get(self.page.get_absolute_url('en'))
@@ -126,7 +126,7 @@ class SubmitFormViewTest(CMSTestCase):
         public_page_form_plugin = (
             public_placeholder
             .cmsplugin_set
-            .filter(plugin_type='FormPlugin')
+            .filter(plugin_type='FormParentPlugin')
             .first()
         )
         response = self.client.get(self.page.get_absolute_url('en'))
@@ -152,7 +152,7 @@ class SubmitFormViewTest(CMSTestCase):
 
         form_plugin = add_plugin(
             placeholder,
-            'FormPlugin',
+            'FormParentPlugin',
             'en',
         )  # noqa: E501
 
@@ -184,7 +184,7 @@ class SubmitFormViewTest(CMSTestCase):
 
         form_plugin2 = add_plugin(
             placeholder,
-            'FormPlugin',
+            'FormParentPlugin',
             'en',
             **plugin_data2
         )  # noqa: E501
@@ -223,7 +223,7 @@ class SubmitFormViewTest(CMSTestCase):
 
         form_plugin = add_plugin(
             placeholder,
-            'FormPlugin',
+            'FormParentPlugin',
             'en',
         )  # noqa: E501
 
@@ -249,7 +249,7 @@ class SubmitFormViewTest(CMSTestCase):
 
         form_plugin2 = add_plugin(
             placeholder,
-            'FormPlugin',
+            'FormParentPlugin',
             'en',
         )  # noqa: E501
 

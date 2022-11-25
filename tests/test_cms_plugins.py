@@ -24,7 +24,7 @@ class FormPluginTestCase(CMSTestCase):
             'redirect_type': 'redirect_to_url',
             'url': 'http://www.google.com',
         }
-        self.form_plugin = add_plugin(self.placeholder, 'FormPlugin', 'en', **plugin_data)
+        self.form_plugin = add_plugin(self.placeholder, 'FormParentPlugin', 'en', **plugin_data)
         self.form_plugin.recipients.add(self.user)
 
         add_plugin(self.placeholder, 'SubmitButton', 'en', target=self.form_plugin)

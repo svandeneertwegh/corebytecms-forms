@@ -9,7 +9,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from cms.plugin_pool import plugin_pool
 
-from cms_forms.cms_plugins import FormPlugin
+from cms_forms.cms_plugins import FormParentPlugin
 from cms_forms.validators import is_valid_recipient
 
 from .models import EmailNotification, EmailNotificationFormPlugin
@@ -123,7 +123,7 @@ class ExistingEmailNotificationInline(admin.StackedInline):
     text_variables.short_description = _('available text variables')
 
 
-class EmailNotificationForm(FormPlugin):
+class EmailNotificationForm(FormParentPlugin):
     name = _('Form (Advanced)')
     model = EmailNotificationFormPlugin
     inlines = [

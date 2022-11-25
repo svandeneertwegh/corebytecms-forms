@@ -1,40 +1,56 @@
 from typing import Dict
 
+from PIL import Image
+from cms.plugin_base import CMSPluginBase
+from cms.plugin_pool import plugin_pool
 from django import forms
+from django.conf import settings
+from django.contrib import messages
 from django.contrib.admin import TabularInline
 from django.core.validators import MinLengthValidator
 from django.db.models import query
+from django.shortcuts import redirect
 from django.template.loader import select_template
+from django.utils.safestring import mark_safe
+from six import text_type
 from django.utils.translation import ugettext
 from django.utils.translation import ugettext_lazy as _
-
-from cms.plugin_base import CMSPluginBase
-from cms.plugin_pool import plugin_pool
-
 from emailit.api import send_mail
-from filer.models import filemodels, imagemodels
-from PIL import Image
+from filer.models import filemodels
+from filer.models import imagemodels
 
+from cms_forms.models import FormPlugin
 from . import models
-from .forms import (
-    BooleanFieldForm, CaptchaFieldForm, EmailFieldForm, FileFieldForm,
-    FormPluginForm, FormSubmissionBaseForm, HiddenFieldForm, ImageFieldForm,
-    MultipleSelectFieldForm, RadioFieldForm, RestrictedFileField,
-    RestrictedImageField, SelectFieldForm, TextAreaFieldForm, TextFieldForm,
-)
+from .forms import BooleanFieldForm
+from .forms import CaptchaFieldForm
+from .forms import EmailFieldForm
+from .forms import FileFieldForm
+from .forms import FormPluginForm
+from .forms import FormSubmissionBaseForm
+from .forms import HiddenFieldForm
+from .forms import HoneypotField
+from .forms import ImageFieldForm
+from .forms import MultipleSelectFieldForm
+from .forms import RadioFieldForm
+from .forms import RestrictedFileField
+from .forms import RestrictedImageField
+from .forms import SelectFieldForm
+from .forms import TextAreaFieldForm
+from .forms import TextFieldForm
 from .helpers import get_user_name
 from .models import SerializedFormField
-from .signals import form_post_save, form_pre_save
+from .signals import form_post_save
+from .signals import form_pre_save
 from .sizefield.utils import filesizeformat
 from .utils import get_action_backends
-from .validators import (
-    MaxChoicesValidator, MinChoicesValidator, is_valid_recipient,
-)
+from .validators import MaxChoicesValidator
+from .validators import MinChoicesValidator
+from .validators import is_valid_recipient
 
 
 class FormElement(CMSPluginBase):
     # Don't cache anything.
-    cache = False
+    cache = True
     module = _('Forms')
 
 
@@ -42,7 +58,7 @@ class FieldContainer(FormElement):
     allow_children = True
 
 
-class FormBasePlugin(FieldContainer):
+class FormParentPlugin(FieldContainer):
     render_template = True
     name = _('Form')
     module = _('Form types')
@@ -74,7 +90,7 @@ class FormBasePlugin(FieldContainer):
     )
 
     def render(self, context, instance, placeholder):
-        context = super(FormBasePlugin, self).render(context, instance, placeholder)
+        context = super(FormParentPlugin, self).render(context, instance, placeholder)
         request = context['request']
 
         form = self.process_form(instance, request)
@@ -82,6 +98,7 @@ class FormBasePlugin(FieldContainer):
         if request.POST.get('form_plugin_id') == str(instance.id) and form.is_valid():
             context['post_success'] = True
             context['form_success_url'] = self.get_success_url(instance)
+            return redirect(self.get_success_url(instance))
         context['form'] = form
         return context
 
@@ -100,6 +117,19 @@ class FormBasePlugin(FieldContainer):
         form_class = self.get_form_class(instance)
         form_kwargs = self.get_form_kwargs(instance, request)
         form = form_class(**form_kwargs)
+
+        is_honeypot_captcha_enabled = getattr(
+            settings, 'cms_forms_IS_HONEYPOT_CAPTCHA_ENABLED', False
+        )
+        if is_honeypot_captcha_enabled:
+            honeypot_fields = [field for field in form.errors if field.startswith('lemoncup')]
+            is_honeypot_filled = bool(honeypot_fields)
+            if is_honeypot_filled:
+                form_errors = form.errors.copy()
+                for field in form_errors:
+                    if field in honeypot_fields:
+                        del form.errors[field]
+                return form
 
         if request.POST.get('form_plugin_id') == str(instance.id) and form.is_valid():
             fields = [field for field in form.base_fields.values()
@@ -148,7 +178,7 @@ class FormBasePlugin(FieldContainer):
         fields = self.get_form_fields(instance)
         formClass = (
             type(FormSubmissionBaseForm)
-            ('DynamicForm', (FormSubmissionBaseForm,), fields)
+            ('AldrynDynamicForm', (FormSubmissionBaseForm,), fields)
         )
         return formClass
 
@@ -177,6 +207,14 @@ class FormBasePlugin(FieldContainer):
 
     def get_success_url(self, instance):
         return instance.success_url
+
+    def send_success_message(self, instance, request):
+        """
+        Sends a success message to the request user
+        using django's contrib.messages app.
+        """
+        message = instance.success_message or ugettext('The form has been sent.')
+        messages.success(request, mark_safe(message))
 
     def send_notifications(self, instance, form):
         users = instance.recipients.exclude(email='')
@@ -275,17 +313,17 @@ class Field(FormElement):
 
     def serialize_value(self, instance, value, is_confirmation=False):
         if isinstance(value, query.QuerySet):
-            value = u', '.join(map(str, value))
+            value = ', '.join(map(text_type, value))
         elif value is None:
             value = '-'
-        return str(value)
+        return text_type(value)
 
     def serialize_field(self, form, field, is_confirmation=False):
         """Returns a (key, label, value) named tuple for the given field."""
         value = self.serialize_value(
             instance=field.plugin_instance,
             value=form.cleaned_data[field.name],
-            is_confirmation=is_confirmation,
+            is_confirmation=is_confirmation
         )
         serialized_field = SerializedFormField(
             name=field.name,
@@ -510,7 +548,7 @@ class HiddenField(BaseTextField):
     name = _('Hidden Field')
     form = HiddenFieldForm
     form_field_widget_input_type = 'hidden'
-    fieldset_general_fields = ['name', 'initial_value']
+    fieldset_general_fields = ['label', 'name', 'initial_value']
     fieldset_advanced_fields = []
 
 
@@ -519,14 +557,14 @@ class PhoneField(BaseTextField):
     form_field_widget_input_type = 'phone'
 
 
-class NumberField(BaseTextField):
-    name = _('Number Field')
-    form_field_widget_input_type = 'number'
-
-
 class DateField(BaseTextField):
     name = _('Date Field')
     form_field_widget_input_type = 'date'
+
+
+class NumberField(BaseTextField):
+    name = _('Number Field')
+    form_field_widget_input_type = 'number'
 
 
 class EmailField(BaseTextField):
@@ -600,7 +638,8 @@ class FileField(Field):
 
     def serialize_value(self, instance, value, is_confirmation=False):
         if value:
-            return value.absolute_uri
+            return (value.original_filename if is_confirmation
+                    else value.absolute_uri)
         else:
             return '-'
 
@@ -856,6 +895,34 @@ else:
     plugin_pool.register_plugin(CaptchaField)
 
 
+class HoneypotCaptchaPlugin(Field):
+    name = _("Honeypot Captcha")
+    parent_classes = [
+        "FormPlugin",
+        "EmailNotificationForm",
+    ]
+    allow_children = False
+
+    form_field = HoneypotField
+    form_field_widget = forms.TextInput
+
+    fieldset_advanced_fields = []
+    form_field_enabled_options = ['label',]
+    fieldset_general_fields = ['label',]
+
+    def serialize_field(self, *args, **kwargs):
+        # None means don't serialize me
+        return None
+
+
+class LemonCup(HoneypotCaptchaPlugin):
+    """
+    This is used to change the HoneypotCaptchaPlugin
+    name in forms which is based on the class name
+    """
+    pass
+
+
 class SubmitButton(FormElement):
     render_template = 'cms_forms/submit_button.html'
     name = _('Submit Button')
@@ -868,8 +935,10 @@ plugin_pool.register_plugin(FileField)
 plugin_pool.register_plugin(HiddenField)
 plugin_pool.register_plugin(PhoneField)
 plugin_pool.register_plugin(NumberField)
+plugin_pool.register_plugin(DateField)
 plugin_pool.register_plugin(ImageField)
 plugin_pool.register_plugin(Fieldset)
+plugin_pool.register_plugin(FormParentPlugin)
 plugin_pool.register_plugin(MultipleSelectField)
 plugin_pool.register_plugin(MultipleCheckboxSelectField)
 plugin_pool.register_plugin(RadioSelectField)
@@ -877,3 +946,10 @@ plugin_pool.register_plugin(SelectField)
 plugin_pool.register_plugin(SubmitButton)
 plugin_pool.register_plugin(TextAreaField)
 plugin_pool.register_plugin(TextField)
+
+
+is_honeypot_captcha_enabled = getattr(
+    settings, 'CMS_FORMS_IS_HONEYPOT_CAPTCHA_ENABLED', False
+)
+if is_honeypot_captcha_enabled:
+    plugin_pool.register_plugin(LemonCup)
