@@ -13,22 +13,22 @@ from .action_backends_base import BaseAction
 from .compat import build_plugin_tree
 
 
-DEFAULT_ALDRYN_FORMS_ACTION_BACKENDS = {
-    'default': 'aldryn_forms.action_backends.DefaultAction',
-    'email_only': 'aldryn_forms.action_backends.EmailAction',
-    'none': 'aldryn_forms.action_backends.NoAction',
+DEFAULT_FORMS_ACTION_BACKENDS = {
+    'default': 'cms_forms.action_backends.DefaultAction',
+    'email_only': 'cms_forms.action_backends.EmailAction',
+    'none': 'cms_forms.action_backends.NoAction',
 }
-ALDRYN_FORMS_ACTION_BACKEND_KEY_MAX_SIZE = 15
+FORMS_ACTION_BACKEND_KEY_MAX_SIZE = 15
 
 
 def get_action_backends():
-    base_error_msg = 'Invalid settings.ALDRYN_FORMS_ACTION_BACKENDS.'
-    max_key_size = ALDRYN_FORMS_ACTION_BACKEND_KEY_MAX_SIZE
+    base_error_msg = 'Invalid settings.CMS_FORMS_ACTION_BACKENDS.'
+    max_key_size = FORMS_ACTION_BACKEND_KEY_MAX_SIZE
 
     try:
-        backends = settings.ALDRYN_FORMS_ACTION_BACKENDS
+        backends = settings.CMS_FORMS_ACTION_BACKENDS
     except AttributeError:
-        backends = DEFAULT_ALDRYN_FORMS_ACTION_BACKENDS
+        backends = DEFAULT_FORMS_ACTION_BACKENDS
 
     try:
         backends = {k: import_string(v) for k, v in backends.items()}
@@ -42,7 +42,7 @@ def get_action_backends():
 
     if not all(issubclass(klass, BaseAction) for klass in backends.values()):
         raise ImproperlyConfigured(
-            '{} All classes must derive from aldryn_forms.action_backends_base.BaseAction'
+            '{} All classes must derive from cms_forms.action_backends_base.BaseAction'
             .format(base_error_msg)
         )
 

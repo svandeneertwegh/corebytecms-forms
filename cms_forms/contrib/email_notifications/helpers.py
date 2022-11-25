@@ -5,7 +5,7 @@ from string import Template
 from emailit.utils import get_template_name
 
 
-EMAIL_TEMPLATES_BASE = 'aldryn_forms/email_notifications/emails/'
+EMAIL_TEMPLATES_BASE = 'cms_forms/email_notifications/emails/'
 
 EMAIL_THEMES_PATH = os.path.join(EMAIL_TEMPLATES_BASE, 'themes')
 EMAIL_NOTIFICATIONS_PATH = os.path.join(EMAIL_TEMPLATES_BASE, 'notification')

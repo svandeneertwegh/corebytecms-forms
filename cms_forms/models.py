@@ -20,7 +20,7 @@ from filer.fields.folder import FilerFolderField
 from .compat import build_plugin_tree
 from .helpers import is_form_element
 from .sizefield.models import FileSizeField
-from .utils import ALDRYN_FORMS_ACTION_BACKEND_KEY_MAX_SIZE
+from .utils import FORMS_ACTION_BACKEND_KEY_MAX_SIZE
 from .utils import action_backend_choices
 
 
@@ -91,14 +91,14 @@ class SerializedFormField(BaseSerializedFormField):
 
 
 class BaseFormPlugin(CMSPlugin):
-    FALLBACK_FORM_TEMPLATE = 'aldryn_forms/form.html'
+    FALLBACK_FORM_TEMPLATE = 'cms_forms/form.html'
     DEFAULT_FORM_TEMPLATE = getattr(
-        settings, 'ALDRYN_FORMS_DEFAULT_TEMPLATE', FALLBACK_FORM_TEMPLATE)
+        settings, 'CMS_FORMS_DEFAULT_TEMPLATE', FALLBACK_FORM_TEMPLATE)
 
     FORM_TEMPLATES = ((DEFAULT_FORM_TEMPLATE, _('Default')),)
 
-    if hasattr(settings, 'ALDRYN_FORMS_TEMPLATES'):
-        FORM_TEMPLATES += settings.ALDRYN_FORMS_TEMPLATES
+    if hasattr(settings, 'CMS_FORMS_TEMPLATES'):
+        FORM_TEMPLATES += settings.CMS_FORMS_TEMPLATES
 
     REDIRECT_TO_PAGE = 'redirect_to_page'
     REDIRECT_TO_URL = 'redirect_to_url'
@@ -156,7 +156,7 @@ class BaseFormPlugin(CMSPlugin):
 
     action_backend = models.CharField(
         verbose_name=_('Action backend'),
-        max_length=ALDRYN_FORMS_ACTION_BACKEND_KEY_MAX_SIZE,
+        max_length=FORMS_ACTION_BACKEND_KEY_MAX_SIZE,
         default='default',
         choices=action_backend_choices(),
     )

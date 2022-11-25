@@ -32,7 +32,7 @@ class BaseFormSubmissionAdmin(admin.ModelAdmin):
     def get_data_for_display(self, obj):
         data = obj.get_form_data()
         html = render_to_string(
-            'admin/aldryn_forms/display/submission_data.html',
+            'admin/cms_forms/display/submission_data.html',
             {'data': data}
         )
         return html
@@ -48,7 +48,7 @@ class BaseFormSubmissionAdmin(admin.ModelAdmin):
     def get_recipients_for_display(self, obj):
         people_list = self.get_recipients(obj)
         html = render_to_string(
-            'admin/aldryn_forms/display/recipients.html',
+            'admin/cms_forms/display/recipients.html',
             {'people': people_list},
         )
         return html

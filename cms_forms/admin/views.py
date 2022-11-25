@@ -27,7 +27,7 @@ class FormExportWizardView(SessionWizardView):
         FormExportStep2Form,
     ]
 
-    template_name = 'admin/aldryn_forms/export_wizard.html'
+    template_name = 'admin/cms_forms/export_wizard.html'
 
     def get_context_data(self, form, **kwargs):
         context = super(FormExportWizardView, self).get_context_data(form, **kwargs)

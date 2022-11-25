@@ -1,7 +1,17 @@
+Features
+===========
+- Create a cms page where you can setup form fields, a captcha and submit button.
+- Works in python3.
+- When setting the apphook to 'Forms' redirect works.
+- Forms and all fields are saved in the database.
+- When set the ``send mail option`` it sends a mail with all the fields to the specified receivers.
+- In the admin, can view every form submission with the fields.
+- In the admin, export is possible to .csv.
+
 Installation
 ===========
 
-Run ``pip install git+https://github.com/svandeneertwegh/djangocms-formbuilder``.
+Run ``pip install git+https://github.com/svandeneertwegh/corebytecms-forms``.
 
 Update ``INSTALLED_APPS`` with ::
 
