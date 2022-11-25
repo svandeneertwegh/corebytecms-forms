@@ -18,7 +18,6 @@ Update ``INSTALLED_APPS`` with ::
 
     INSTALLED_APPS = [
         ...
-        'absolute',
         'cms_forms',
         'cms_forms.contrib.email_notifications',
         'filer',
