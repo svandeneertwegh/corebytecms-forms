@@ -2,7 +2,8 @@ Features
 ===========
 - Create a cms page where you can setup form fields, a captcha and submit button.
 - Works in python3.
-- When setting the apphook to 'Forms' redirect works.
+- Set the apphook to 'Forms' and then the redirect works.
+- Create a 'thank you' page where you can redirect to.
 - Forms and all fields are saved in the database.
 - When set the ``send mail option`` it sends a mail with all the fields to the specified receivers.
 - In the admin, can view every form submission with the fields.
