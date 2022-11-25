@@ -1,6 +1,6 @@
 from setuptools import find_packages, setup
 
-from aldryn_forms import __version__
+from cms_forms import __version__
 
 
 REQUIREMENTS = [
