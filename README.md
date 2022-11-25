@@ -18,8 +18,8 @@ Update ``INSTALLED_APPS`` with ::
     INSTALLED_APPS = [
         ...
         'absolute',
-        'aldryn_forms',
-        'aldryn_forms.contrib.email_notifications',
+        'cms_forms',
+        'cms_forms.contrib.email_notifications',
         'emailit',
         'filer',
     ]

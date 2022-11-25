@@ -11,7 +11,7 @@
     {% endif %}
     <form action="." method="post">
         {% csrf_token %}
-        {% block aldryn_form_hidden %}{% endblock %}
+        {% block cms_form_hidden %}{% endblock %}
         <div>
             <fieldset class="module aligned">
                 {% for field in adminform %}
@@ -26,7 +26,7 @@
             </fieldset>
         </div>
         <div class="submit-row">
-            {% block aldryn_form_buttons %}
+            {% block cms_form_buttons %}
                 <input type="submit" value="{% trans "Export" %}" class="default" name="export">
             {% endblock %}
         </div>

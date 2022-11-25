@@ -178,7 +178,7 @@ class FormPlugin(FieldContainer):
         fields = self.get_form_fields(instance)
         formClass = (
             type(FormSubmissionBaseForm)
-            ('AldrynDynamicForm', (FormSubmissionBaseForm,), fields)
+            ('DynamicForm', (FormSubmissionBaseForm,), fields)
         )
         return formClass
 

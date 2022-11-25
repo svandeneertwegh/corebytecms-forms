@@ -2,7 +2,7 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
@@ -49,110 +49,110 @@ msgstr ""
 msgid "No records found"
 msgstr ""
 
-#: boilerplates/bootstrap3/templates/admin/aldryn_forms/display/submission_data.html:3
-#: boilerplates/legacy/templates/admin/aldryn_forms/display/submission_data.html:3
-#: templates/admin/aldryn_forms/display/submission_data.html:3
+#: boilerplates/bootstrap3/templates/admin/cms_forms/display/submission_data.html:3
+#: boilerplates/legacy/templates/admin/cms_forms/display/submission_data.html:3
+#: templates/admin/cms_forms/display/submission_data.html:3
 msgid "Field"
 msgstr ""
 
-#: boilerplates/bootstrap3/templates/admin/aldryn_forms/display/submission_data.html:4
-#: boilerplates/legacy/templates/admin/aldryn_forms/display/submission_data.html:4
+#: boilerplates/bootstrap3/templates/admin/cms_forms/display/submission_data.html:4
+#: boilerplates/legacy/templates/admin/cms_forms/display/submission_data.html:4
 #: models.py:306 models.py:461
-#: templates/admin/aldryn_forms/display/submission_data.html:4
+#: templates/admin/cms_forms/display/submission_data.html:4
 msgid "Label"
 msgstr ""
 
-#: boilerplates/bootstrap3/templates/admin/aldryn_forms/display/submission_data.html:5
-#: boilerplates/legacy/templates/admin/aldryn_forms/display/submission_data.html:5
-#: models.py:451 templates/admin/aldryn_forms/display/submission_data.html:5
+#: boilerplates/bootstrap3/templates/admin/cms_forms/display/submission_data.html:5
+#: boilerplates/legacy/templates/admin/cms_forms/display/submission_data.html:5
+#: models.py:451 templates/admin/cms_forms/display/submission_data.html:5
 msgid "Value"
 msgstr ""
 
-#: boilerplates/bootstrap3/templates/admin/aldryn_forms/export.html:5
-#: boilerplates/legacy/templates/admin/aldryn_forms/export.html:4
-#: boilerplates/legacy/templates/admin/aldryn_forms/export_wizard.html:4
-#: templates/admin/aldryn_forms/export.html:5
+#: boilerplates/bootstrap3/templates/admin/cms_forms/export.html:5
+#: boilerplates/legacy/templates/admin/cms_forms/export.html:4
+#: boilerplates/legacy/templates/admin/cms_forms/export_wizard.html:4
+#: templates/admin/cms_forms/export.html:5
 msgid "Export form submissions"
 msgstr ""
 
-#: boilerplates/bootstrap3/templates/admin/aldryn_forms/export.html:8
-#: boilerplates/legacy/templates/admin/aldryn_forms/export.html:7
-#: boilerplates/legacy/templates/admin/aldryn_forms/export_wizard.html:7
-#: templates/admin/aldryn_forms/export.html:8
+#: boilerplates/bootstrap3/templates/admin/cms_forms/export.html:8
+#: boilerplates/legacy/templates/admin/cms_forms/export.html:7
+#: boilerplates/legacy/templates/admin/cms_forms/export_wizard.html:7
+#: templates/admin/cms_forms/export.html:8
 msgid "Please correct the error below."
 msgid_plural "Please correct the errors below."
 msgstr[0] ""
 msgstr[1] ""
 
-#: boilerplates/bootstrap3/templates/admin/aldryn_forms/export.html:30
-#: boilerplates/bootstrap3/templates/admin/aldryn_forms/export_wizard.html:11
-#: boilerplates/legacy/templates/admin/aldryn_forms/export.html:27
-#: boilerplates/legacy/templates/admin/aldryn_forms/export_wizard.html:30
-#: templates/admin/aldryn_forms/export.html:30
-#: templates/admin/aldryn_forms/export_wizard.html:11
+#: boilerplates/bootstrap3/templates/admin/cms_forms/export.html:30
+#: boilerplates/bootstrap3/templates/admin/cms_forms/export_wizard.html:11
+#: boilerplates/legacy/templates/admin/cms_forms/export.html:27
+#: boilerplates/legacy/templates/admin/cms_forms/export_wizard.html:30
+#: templates/admin/cms_forms/export.html:30
+#: templates/admin/cms_forms/export_wizard.html:11
 msgid "Export"
 msgstr ""
 
-#: boilerplates/bootstrap3/templates/admin/aldryn_forms/export_wizard.html:13
-#: boilerplates/legacy/templates/admin/aldryn_forms/export_wizard.html:32
-#: templates/admin/aldryn_forms/export_wizard.html:13
+#: boilerplates/bootstrap3/templates/admin/cms_forms/export_wizard.html:13
+#: boilerplates/legacy/templates/admin/cms_forms/export_wizard.html:32
+#: templates/admin/cms_forms/export_wizard.html:13
 msgid "Continue"
 msgstr ""
 
-#: boilerplates/bootstrap3/templates/admin/aldryn_forms/formsubmission/change_list.html:9
-#: boilerplates/legacy/templates/admin/aldryn_forms/formsubmission/change_list.html:9
-#: templates/admin/aldryn_forms/formsubmission/change_list.html:9
+#: boilerplates/bootstrap3/templates/admin/cms_forms/formsubmission/change_list.html:9
+#: boilerplates/legacy/templates/admin/cms_forms/formsubmission/change_list.html:9
+#: templates/admin/cms_forms/formsubmission/change_list.html:9
 msgid "Export Form Entries"
 msgstr ""
 
-#: boilerplates/bootstrap3/templates/aldryn_forms/email_notifications/emails/notification.body.html:9
-#: boilerplates/bootstrap3/templates/aldryn_forms/email_notifications/emails/notification.body.txt:8
-#: boilerplates/bootstrap3/templates/aldryn_forms/emails/notification.body.html:3
-#: boilerplates/bootstrap3/templates/aldryn_forms/emails/notification.body.txt:2
-#: boilerplates/bootstrap3/templates/aldryn_forms/emails/user/notification.body.txt:5
-#: boilerplates/legacy/templates/aldryn_forms/email_notifications/emails/notification.body.html:9
-#: boilerplates/legacy/templates/aldryn_forms/email_notifications/emails/notification.body.txt:8
-#: boilerplates/legacy/templates/aldryn_forms/emails/notification.body.html:3
-#: boilerplates/legacy/templates/aldryn_forms/emails/notification.body.txt:2
-#: boilerplates/legacy/templates/aldryn_forms/emails/user/notification.body.txt:5
-#: templates/aldryn_forms/email_notifications/emails/notification.body.html:9
-#: templates/aldryn_forms/email_notifications/emails/notification.body.txt:8
-#: templates/aldryn_forms/emails/notification.body.html:3
-#: templates/aldryn_forms/emails/notification.body.txt:2
-#: templates/aldryn_forms/emails/user/notification.body.txt:5
+#: boilerplates/bootstrap3/templates/cms_forms/email_notifications/emails/notification.body.html:9
+#: boilerplates/bootstrap3/templates/cms_forms/email_notifications/emails/notification.body.txt:8
+#: boilerplates/bootstrap3/templates/cms_forms/emails/notification.body.html:3
+#: boilerplates/bootstrap3/templates/cms_forms/emails/notification.body.txt:2
+#: boilerplates/bootstrap3/templates/cms_forms/emails/user/notification.body.txt:5
+#: boilerplates/legacy/templates/cms_forms/email_notifications/emails/notification.body.html:9
+#: boilerplates/legacy/templates/cms_forms/email_notifications/emails/notification.body.txt:8
+#: boilerplates/legacy/templates/cms_forms/emails/notification.body.html:3
+#: boilerplates/legacy/templates/cms_forms/emails/notification.body.txt:2
+#: boilerplates/legacy/templates/cms_forms/emails/user/notification.body.txt:5
+#: templates/cms_forms/email_notifications/emails/notification.body.html:9
+#: templates/cms_forms/email_notifications/emails/notification.body.txt:8
+#: templates/cms_forms/emails/notification.body.html:3
+#: templates/cms_forms/emails/notification.body.txt:2
+#: templates/cms_forms/emails/user/notification.body.txt:5
 #, python-format
 msgid "Form name: %(form_name)s"
 msgstr ""
 
-#: boilerplates/bootstrap3/templates/aldryn_forms/email_notifications/emails/notification.subject.txt:1
-#: boilerplates/bootstrap3/templates/aldryn_forms/emails/notification.subject.txt:1
-#: boilerplates/bootstrap3/templates/aldryn_forms/emails/user/notification.subject.txt:1
-#: boilerplates/legacy/templates/aldryn_forms/email_notifications/emails/notification.subject.txt:1
-#: boilerplates/legacy/templates/aldryn_forms/emails/notification.subject.txt:1
-#: boilerplates/legacy/templates/aldryn_forms/emails/user/notification.subject.txt:1
-#: templates/aldryn_forms/email_notifications/emails/notification.subject.txt:1
-#: templates/aldryn_forms/emails/notification.subject.txt:1
-#: templates/aldryn_forms/emails/user/notification.subject.txt:1
+#: boilerplates/bootstrap3/templates/cms_forms/email_notifications/emails/notification.subject.txt:1
+#: boilerplates/bootstrap3/templates/cms_forms/emails/notification.subject.txt:1
+#: boilerplates/bootstrap3/templates/cms_forms/emails/user/notification.subject.txt:1
+#: boilerplates/legacy/templates/cms_forms/email_notifications/emails/notification.subject.txt:1
+#: boilerplates/legacy/templates/cms_forms/emails/notification.subject.txt:1
+#: boilerplates/legacy/templates/cms_forms/emails/user/notification.subject.txt:1
+#: templates/cms_forms/email_notifications/emails/notification.subject.txt:1
+#: templates/cms_forms/emails/notification.subject.txt:1
+#: templates/cms_forms/emails/user/notification.subject.txt:1
 #, python-format
 msgid "[Form submission] %(form_name)s"
 msgstr ""
 
-#: boilerplates/bootstrap3/templates/aldryn_forms/field.html:7
-#: boilerplates/bootstrap3/templates/aldryn_forms/fields/emailfield.html:9
-#: boilerplates/bootstrap3/templates/aldryn_forms/fields/filefield.html:9
-#: boilerplates/bootstrap3/templates/aldryn_forms/fields/imagefield.html:9
-#: boilerplates/bootstrap3/templates/aldryn_forms/fields/multiplecheckboxselectfield.html:9
-#: boilerplates/bootstrap3/templates/aldryn_forms/fields/multipleselectfield.html:9
-#: boilerplates/bootstrap3/templates/aldryn_forms/fields/radioselectfield.html:8
-#: boilerplates/bootstrap3/templates/aldryn_forms/fields/selectfield.html:9
-#: boilerplates/bootstrap3/templates/aldryn_forms/fields/textareafield.html:9
-#: boilerplates/bootstrap3/templates/aldryn_forms/fields/textfield.html:9
-#: templates/aldryn_forms/field.html:14
-#: templates/aldryn_forms/fields/multiplecheckboxselectfield.html:9
+#: boilerplates/bootstrap3/templates/cms_forms/field.html:7
+#: boilerplates/bootstrap3/templates/cms_forms/fields/emailfield.html:9
+#: boilerplates/bootstrap3/templates/cms_forms/fields/filefield.html:9
+#: boilerplates/bootstrap3/templates/cms_forms/fields/imagefield.html:9
+#: boilerplates/bootstrap3/templates/cms_forms/fields/multiplecheckboxselectfield.html:9
+#: boilerplates/bootstrap3/templates/cms_forms/fields/multipleselectfield.html:9
+#: boilerplates/bootstrap3/templates/cms_forms/fields/radioselectfield.html:8
+#: boilerplates/bootstrap3/templates/cms_forms/fields/selectfield.html:9
+#: boilerplates/bootstrap3/templates/cms_forms/fields/textareafield.html:9
+#: boilerplates/bootstrap3/templates/cms_forms/fields/textfield.html:9
+#: templates/cms_forms/field.html:14
+#: templates/cms_forms/fields/multiplecheckboxselectfield.html:9
 msgid "Required field"
 msgstr ""
 
-#: boilerplates/bootstrap3/templates/aldryn_forms/form.html:19
+#: boilerplates/bootstrap3/templates/cms_forms/form.html:19
 #, python-format
 msgid ""
 "Thank you for submitting your information, you will be <a "
@@ -617,7 +617,7 @@ msgstr ""
 msgid "Form submissions"
 msgstr ""
 
-#: templates/aldryn_forms/form.html:15
+#: templates/cms_forms/form.html:15
 #, python-format
 msgid ""
 "\n"
