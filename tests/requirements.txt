@@ -6,3 +6,4 @@ djangocms-text-ckeditor>=3.7.0
 flake8
 isort
 django-simple-captcha
+django-sizefield==2.0.0
