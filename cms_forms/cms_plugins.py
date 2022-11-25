@@ -88,7 +88,7 @@ class FormPlugin(FieldContainer):
         form = self.process_form(instance, request)
 
         if request.POST.get('form_plugin_id') == str(
-            instance.id) and form.is_valid():
+                instance.id) and form.is_valid():
             context['post_success'] = True
             context['form_success_url'] = self.get_success_url(instance)
             return redirect(self.get_success_url(instance))
@@ -127,7 +127,7 @@ class FormPlugin(FieldContainer):
                 return form
 
         if request.POST.get('form_plugin_id') == str(
-            instance.id) and form.is_valid():
+                instance.id) and form.is_valid():
             fields = [field for field in form.base_fields.values()
                       if hasattr(field, '_plugin_instance')]
 
@@ -163,7 +163,7 @@ class FormPlugin(FieldContainer):
                 request=request,
             )
         elif request.POST.get('form_plugin_id') == str(
-            instance.id) and request.method == 'POST':
+                instance.id) and request.method == 'POST':
             # only call form_invalid if request is POST and form is not valid
             self.form_invalid(instance, request, form)
         return form
@@ -197,7 +197,7 @@ class FormPlugin(FieldContainer):
         }
 
         if request.POST.get('form_plugin_id') == str(
-            instance.id) and request.method in ('POST', 'PUT'):
+                instance.id) and request.method in ('POST', 'PUT'):
             kwargs['data'] = request.POST.copy()
             kwargs['data']['language'] = instance.language
             kwargs['data']['form_plugin_id'] = instance.pk
@@ -581,10 +581,10 @@ class EmailField(BaseTextField):
     form_field_widget = forms.EmailInput
     form_field_widget_input_type = 'email'
     fieldset_advanced_fields = [
-                                   'email_send_notification',
-                                   'email_subject',
-                                   'email_body',
-                               ] + Field.fieldset_advanced_fields
+        'email_send_notification',
+        'email_subject',
+        'email_body',
+    ] + Field.fieldset_advanced_fields
     email_template_base = 'cms_forms/emails/user/notification'
 
     def send_notification_email(self, email, form, form_field_instance):
@@ -625,8 +625,8 @@ class FileField(Field):
         'validators',
     ]
     fieldset_general_fields = [
-                                  'upload_to',
-                              ] + Field.fieldset_general_fields
+        'upload_to',
+    ] + Field.fieldset_general_fields
     fieldset_advanced_fields = [
         'help_text',
         'max_size',
@@ -698,8 +698,8 @@ class ImageField(FileField):
     form_field = RestrictedImageField
     form_field_widget = RestrictedImageField.widget
     fieldset_general_fields = [
-                                  'upload_to',
-                              ] + Field.fieldset_general_fields
+        'upload_to',
+    ] + Field.fieldset_general_fields
     fieldset_advanced_fields = [
         'help_text',
         'max_size',
@@ -902,7 +902,6 @@ else:
         def serialize_field(self, *args, **kwargs):
             # None means don't serialize me
             return None
-
 
     plugin_pool.register_plugin(CaptchaField)
 
