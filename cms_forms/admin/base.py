@@ -1,12 +1,11 @@
 # -*- coding: utf-8 -*-
 from email.utils import formataddr
 
+import six
 from django.contrib import admin
 from django.template.loader import render_to_string
 from django.urls import reverse
-import six
 from django.utils.translation import ugettext_lazy as _
-
 
 if six.PY2:
     str_dunder_method = '__unicode__'
@@ -36,6 +35,7 @@ class BaseFormSubmissionAdmin(admin.ModelAdmin):
             {'data': data}
         )
         return html
+
     get_data_for_display.allow_tags = True
     get_data_for_display.short_description = _('data')
 
@@ -52,6 +52,7 @@ class BaseFormSubmissionAdmin(admin.ModelAdmin):
             {'people': people_list},
         )
         return html
+
     get_recipients_for_display.allow_tags = True
     get_recipients_for_display.short_description = _('people notified')
 

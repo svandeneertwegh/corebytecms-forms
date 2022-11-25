@@ -9,8 +9,8 @@ from django.utils.text import slugify
 from django.utils.translation import ugettext
 from django.utils.translation import ugettext_lazy as _
 
-from ..models import FormSubmission
 from .exporter import Exporter
+from ..models import FormSubmission
 
 
 def form_choices(modelClass):
@@ -56,7 +56,8 @@ class BaseFormExportForm(forms.Form):
         queryset = self.get_queryset()
 
         if queryset.count() >= self.excel_limit:
-            error_message = _("Export failed! More than 65,536 entries found, exceeded Excel limitation!")
+            error_message = _(
+                "Export failed! More than 65,536 entries found, exceeded Excel limitation!")
             raise forms.ValidationError(error_message)
 
         return self.cleaned_data
@@ -88,7 +89,8 @@ class BaseFormExportForm(forms.Form):
             queryset = queryset.filter(sent_at__gte=lower)
 
         if to_date:
-            upper = datetime(*to_date.timetuple()[:6]) + timedelta(days=1)  # exclusive
+            upper = datetime(*to_date.timetuple()[:6]) + timedelta(
+                days=1)  # exclusive
             queryset = queryset.filter(sent_at__lt=upper)
 
         return queryset
@@ -115,7 +117,8 @@ class FormExportStep2Form(forms.Form):
 
         pre_selected_fields = (field.field_id for field in current_fields)
 
-        self.fields['current_fields'].choices = form_field_choices(current_fields)
+        self.fields['current_fields'].choices = form_field_choices(
+            current_fields)
         self.fields['current_fields'].initial = pre_selected_fields
         self.fields['old_fields'].choices = form_field_choices(old_fields)
 

@@ -19,7 +19,8 @@ class FileSizeWidget(forms.TextInput):
         Given a dictionary of data and this widget's name, returns the value
         of this widget. Returns None if it's not provided.
         """
-        value = super(FileSizeWidget, self).value_from_datadict(data, files, name)
+        value = super(FileSizeWidget, self).value_from_datadict(data, files,
+                                                                name)
         if value not in EMPTY_VALUES:
             try:
                 return parse_size(value)

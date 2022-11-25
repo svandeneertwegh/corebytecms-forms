@@ -4,18 +4,18 @@ import operator
 import re
 import sys
 
+import six
 from django.conf import settings
 from django.utils import formats
-import six
 from django.utils.translation import ugettext as _
-
 
 if sys.version_info >= (3, 0):
     xrange = range
 
 SIZEFIELD_FORMAT = getattr(settings, 'SIZEFIELD_FORMAT', '{value}{unit}')
 
-file_size_re = re.compile(r'^(?P<value>[0-9\.,]+?)\s*(?P<unit>[KMGTPEZY]?B?)$', re.IGNORECASE)
+file_size_re = re.compile(r'^(?P<value>[0-9\.,]+?)\s*(?P<unit>[KMGTPEZY]?B?)$',
+                          re.IGNORECASE)
 FILESIZE_UNITS = {
     'B': 1,
     'KB': 1 << 10,
@@ -44,7 +44,8 @@ def filesizeformat(bytes, decimals=1):
     def filesize_number_format(value):
         return formats.number_format(round(value, decimals), decimals)
 
-    units_list = sorted(six.iteritems(FILESIZE_UNITS), key=operator.itemgetter(1))
+    units_list = sorted(six.iteritems(FILESIZE_UNITS),
+                        key=operator.itemgetter(1))
 
     value = unit = None
     len_unints_list = len(units_list)

@@ -2,19 +2,16 @@
 import logging
 from email.utils import parseaddr
 
+from cms.plugin_pool import plugin_pool
 from django.contrib import admin
 from django.core.mail import get_connection
 from django.utils.html import mark_safe
 from django.utils.translation import ugettext_lazy as _
 
-from cms.plugin_pool import plugin_pool
-
 from cms_forms.cms_plugins import FormPlugin
 from cms_forms.validators import is_valid_recipient
-
 from .models import EmailNotification, EmailNotificationFormPlugin
 from .notification import DefaultNotificationConf
-
 
 logger = logging.getLogger(__name__)
 
@@ -35,7 +32,8 @@ class NewEmailNotificationInline(admin.StackedInline):
     )
 
     def get_queryset(self, request):
-        queryset = super(NewEmailNotificationInline, self).get_queryset(request)
+        queryset = super(NewEmailNotificationInline, self).get_queryset(
+            request)
         return queryset.none()
 
 
@@ -67,7 +65,8 @@ class ExistingEmailNotificationInline(admin.StackedInline):
         return False
 
     def get_fieldsets(self, request, obj=None):
-        fieldsets = super(ExistingEmailNotificationInline, self).get_fieldsets(request, obj)
+        fieldsets = super(ExistingEmailNotificationInline, self).get_fieldsets(
+            request, obj)
 
         if obj is None:
             return fieldsets
@@ -105,14 +104,18 @@ class ExistingEmailNotificationInline(admin.StackedInline):
 
         for category, choices in choices_by_category:
             # <li>field_1</li><li>field_2</li>
-            fields_li = ''.join(('<li>{0} | {1}</li>'.format(*var) for var in choices))
+            fields_li = ''.join(
+                ('<li>{0} | {1}</li>'.format(*var) for var in choices))
 
             if fields_li:
-                li_item = '<li>{0}</li><ul>{1}</ul>'.format(category, fields_li)
+                li_item = '<li>{0}</li><ul>{1}</ul>'.format(category,
+                                                            fields_li)
                 li_items.append(li_item)
         unordered_list = '<ul>{0}</ul>'.format(''.join(li_items))
-        help_text = '<p class="help">{0}</p>'.format(self.text_variables_help_text)
+        help_text = '<p class="help">{0}</p>'.format(
+            self.text_variables_help_text)
         return mark_safe(unordered_list + '\n' + help_text)
+
     text_variables.allow_tags = True
     text_variables.short_description = _('available text variables')
 
@@ -147,13 +150,15 @@ class EmailNotificationForm(FormPlugin):
     )
 
     def get_inline_instances(self, request, obj=None):
-        inlines = super(EmailNotificationForm, self).get_inline_instances(request, obj)
+        inlines = super(EmailNotificationForm, self).get_inline_instances(
+            request, obj)
 
         if obj is None:
             # remove ExistingEmailNotificationInline inline instance
             # if we're first creating this object.
             inlines = [inline for inline in inlines
-                       if not isinstance(inline, ExistingEmailNotificationInline)]
+                       if
+                       not isinstance(inline, ExistingEmailNotificationInline)]
         return inlines
 
     def send_notifications(self, instance, form):

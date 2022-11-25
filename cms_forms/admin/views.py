@@ -1,14 +1,12 @@
 # -*- coding: utf-8 -*-
-from django import get_version
 from django.contrib import messages
 from django.http import HttpResponse
 from django.shortcuts import redirect
 from django.utils.translation import get_language_from_request, ugettext
 
-from ..compat import SessionWizardView
 from .exporter import Exporter
 from .forms import FormExportStep1Form, FormExportStep2Form
-
+from ..compat import SessionWizardView
 
 mimetype_map = {
     'xls': 'application/vnd.ms-excel',
@@ -30,7 +28,8 @@ class FormExportWizardView(SessionWizardView):
     template_name = 'admin/cms_forms/export_wizard.html'
 
     def get_context_data(self, form, **kwargs):
-        context = super(FormExportWizardView, self).get_context_data(form, **kwargs)
+        context = super(FormExportWizardView, self).get_context_data(form,
+                                                                     **kwargs)
         context.update(self.admin.get_admin_context(form=form, title='Export'))
         return context
 
@@ -66,10 +65,12 @@ class FormExportWizardView(SessionWizardView):
 
         if next_step == self.steps.last and not form.get_queryset().exists():
             self.storage.reset()
-            self.admin.message_user(self.request, ugettext("No records found"), level=messages.WARNING)
+            self.admin.message_user(self.request, ugettext("No records found"),
+                                    level=messages.WARNING)
             export_url = 'admin:{}'.format(self.admin.get_admin_url('export'))
             return redirect(export_url)
-        return super(FormExportWizardView, self).render_next_step(form, **kwargs)
+        return super(FormExportWizardView, self).render_next_step(form,
+                                                                  **kwargs)
 
     def get_content_type(self):
         content_type = mimetype_map.get(

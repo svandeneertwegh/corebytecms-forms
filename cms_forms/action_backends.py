@@ -5,7 +5,6 @@ from django.utils.translation import ugettext_lazy as _
 
 from .action_backends_base import BaseAction
 
-
 logger = logging.getLogger(__name__)
 
 
@@ -24,7 +23,8 @@ class EmailAction(BaseAction):
 
     def form_valid(self, cmsplugin, instance, request, form):
         recipients = cmsplugin.send_notifications(instance, form)
-        logger.info('Sent email notifications to {} recipients.'.format(len(recipients)))
+        logger.info('Sent email notifications to {} recipients.'.format(
+            len(recipients)))
 
 
 class NoAction(BaseAction):
@@ -32,4 +32,6 @@ class NoAction(BaseAction):
 
     def form_valid(self, cmsplugin, instance, request, form):
         form_id = form.form_plugin.id
-        logger.info('Not persisting data for "{}" since action_backend is set to "none"'.format(form_id))
+        logger.info(
+            'Not persisting data for "{}" since action_backend is set to "none"'.format(
+                form_id))

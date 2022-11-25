@@ -1,17 +1,15 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
+from cms.utils.moderator import get_cmsplugin_queryset
+from cms.utils.plugins import downcast_plugins
 from django.conf import settings
 from django.core.exceptions import ImproperlyConfigured
 from django.forms.forms import NON_FIELD_ERRORS
 from django.utils.module_loading import import_string
 
-from cms.utils.moderator import get_cmsplugin_queryset
-from cms.utils.plugins import downcast_plugins
-
 from .action_backends_base import BaseAction
 from .compat import build_plugin_tree
-
 
 DEFAULT_FORMS_ACTION_BACKENDS = {
     'default': 'cms_forms.action_backends.DefaultAction',
@@ -37,7 +35,8 @@ def get_action_backends():
 
     if any(len(key) > max_key_size for key in backends):
         raise ImproperlyConfigured(
-            '{} Ensure all keys are no longer than {} characters.'.format(base_error_msg, max_key_size)
+            '{} Ensure all keys are no longer than {} characters.'.format(
+                base_error_msg, max_key_size)
         )
 
     if not all(issubclass(klass, BaseAction) for klass in backends.values()):
@@ -47,7 +46,8 @@ def get_action_backends():
         )
 
     if 'default' not in backends.keys():
-        raise ImproperlyConfigured('{} Key "default" is missing.'.format(base_error_msg))
+        raise ImproperlyConfigured(
+            '{} Key "default" is missing.'.format(base_error_msg))
 
     try:
         [x() for x in backends.values()]  # check abstract base classes sanity
@@ -57,7 +57,8 @@ def get_action_backends():
 
 
 def action_backend_choices(*args, **kwargs):
-    choices = tuple((key, klass.verbose_name) for key, klass in get_action_backends().items())
+    choices = tuple((key, klass.verbose_name) for key, klass in
+                    get_action_backends().items())
     return sorted(choices, key=lambda x: x[1])
 
 
@@ -84,7 +85,8 @@ def get_nested_plugins(parent_plugin, include_self=False):
     if include_self:
         found_plugins.append(parent_plugin)
 
-    child_plugins = getattr(parent_plugin, 'child_plugin_instances', None) or []
+    child_plugins = getattr(parent_plugin, 'child_plugin_instances',
+                            None) or []
 
     for plugin in child_plugins:
         found_nested_plugins = get_nested_plugins(plugin, include_self=True)

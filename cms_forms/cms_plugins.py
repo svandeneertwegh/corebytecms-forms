@@ -12,12 +12,12 @@ from django.db.models import query
 from django.shortcuts import redirect
 from django.template.loader import select_template
 from django.utils.safestring import mark_safe
-from six import text_type
 from django.utils.translation import ugettext
 from django.utils.translation import ugettext_lazy as _
 from emailit.api import send_mail
 from filer.models import filemodels
 from filer.models import imagemodels
+from six import text_type
 
 from cms_forms.models import FormPlugin
 from . import models
@@ -90,12 +90,14 @@ class FormPlugin(FieldContainer):
     )
 
     def render(self, context, instance, placeholder):
-        context = super(FormPlugin, self).render(context, instance, placeholder)
+        context = super(FormPlugin, self).render(context, instance,
+                                                 placeholder)
         request = context['request']
 
         form = self.process_form(instance, request)
 
-        if request.POST.get('form_plugin_id') == str(instance.id) and form.is_valid():
+        if request.POST.get('form_plugin_id') == str(
+            instance.id) and form.is_valid():
             context['post_success'] = True
             context['form_success_url'] = self.get_success_url(instance)
             return redirect(self.get_success_url(instance))
@@ -106,7 +108,8 @@ class FormPlugin(FieldContainer):
         return instance.form_template
 
     def form_valid(self, instance, request, form):
-        action_backend = get_action_backends()[form.form_plugin.action_backend]()
+        action_backend = get_action_backends()[
+            form.form_plugin.action_backend]()
         return action_backend.form_valid(self, instance, request, form)
 
     def form_invalid(self, instance, request, form):
@@ -122,7 +125,8 @@ class FormPlugin(FieldContainer):
             settings, 'CMS_FORMS_IS_HONEYPOT_CAPTCHA_ENABLED', False
         )
         if is_honeypot_captcha_enabled:
-            honeypot_fields = [field for field in form.errors if field.startswith('lemoncup')]
+            honeypot_fields = [field for field in form.errors if
+                               field.startswith('lemoncup')]
             is_honeypot_filled = bool(honeypot_fields)
             if is_honeypot_filled:
                 form_errors = form.errors.copy()
@@ -131,7 +135,8 @@ class FormPlugin(FieldContainer):
                         del form.errors[field]
                 return form
 
-        if request.POST.get('form_plugin_id') == str(instance.id) and form.is_valid():
+        if request.POST.get('form_plugin_id') == str(
+            instance.id) and form.is_valid():
             fields = [field for field in form.base_fields.values()
                       if hasattr(field, '_plugin_instance')]
 
@@ -166,7 +171,8 @@ class FormPlugin(FieldContainer):
                 form=form,
                 request=request,
             )
-        elif request.POST.get('form_plugin_id') == str(instance.id) and request.method == 'POST':
+        elif request.POST.get('form_plugin_id') == str(
+            instance.id) and request.method == 'POST':
             # only call form_invalid if request is POST and form is not valid
             self.form_invalid(instance, request, form)
         return form
@@ -189,7 +195,8 @@ class FormPlugin(FieldContainer):
         for field in fields:
             plugin_instance = field.plugin_instance
             field_plugin = plugin_instance.get_plugin_class_instance()
-            form_fields[field.name] = field_plugin.get_form_field(plugin_instance)
+            form_fields[field.name] = field_plugin.get_form_field(
+                plugin_instance)
         return form_fields
 
     def get_form_kwargs(self, instance, request):
@@ -198,7 +205,8 @@ class FormPlugin(FieldContainer):
             'request': request,
         }
 
-        if request.POST.get('form_plugin_id') == str(instance.id) and request.method in ('POST', 'PUT'):
+        if request.POST.get('form_plugin_id') == str(
+            instance.id) and request.method in ('POST', 'PUT'):
             kwargs['data'] = request.POST.copy()
             kwargs['data']['language'] = instance.language
             kwargs['data']['form_plugin_id'] = instance.pk
@@ -213,7 +221,8 @@ class FormPlugin(FieldContainer):
         Sends a success message to the request user
         using django's contrib.messages app.
         """
-        message = instance.success_message or ugettext('The form has been sent.')
+        message = instance.success_message or ugettext(
+            'The form has been sent.')
         messages.success(request, mark_safe(message))
 
     def send_notifications(self, instance, form):
@@ -273,7 +282,8 @@ class Fieldset(FieldContainer):
         template_names = ['cms_forms/fieldset.html']
 
         if form_plugin:
-            template = 'cms_forms/{}/fieldset.html'.format(form_plugin.plugin_type.lower())
+            template = 'cms_forms/{}/fieldset.html'.format(
+                form_plugin.plugin_type.lower())
             template_names.insert(0, template)
         return template_names
 
@@ -352,7 +362,8 @@ class Field(FormElement):
         kwargs = {'widget': self.get_form_field_widget(instance)}
 
         if 'error_messages' in allowed_options:
-            kwargs['error_messages'] = self.get_error_messages(instance=instance)
+            kwargs['error_messages'] = self.get_error_messages(
+                instance=instance)
         if 'label' in allowed_options:
             kwargs['label'] = instance.label
         if 'help_text' in allowed_options:
@@ -370,7 +381,8 @@ class Field(FormElement):
     def get_form_field_widget(self, instance):
         form_field_widget_class = self.get_form_field_widget_class(instance)
         form_field_widget_kwargs = self.get_form_field_widget_kwargs(instance)
-        form_field_widget_kwargs['attrs'] = self.get_form_field_widget_attrs(instance)
+        form_field_widget_kwargs['attrs'] = self.get_form_field_widget_attrs(
+            instance)
         return form_field_widget_class(**form_field_widget_kwargs)
 
     def get_form_field_widget_class(self, instance):
@@ -445,7 +457,8 @@ class Field(FormElement):
     def get_field_enabled_options(self):
         enabled_options = self.form_field_enabled_options
         disabled_options = self.form_field_disabled_options
-        return [option for option in enabled_options if option not in disabled_options]
+        return [option for option in enabled_options if
+                option not in disabled_options]
 
     def get_template_names(self, instance, form_plugin=None):
         template_names = [
@@ -494,7 +507,8 @@ class BaseTextField(Field):
         return validators
 
     def get_form_field_widget_attrs(self, instance):
-        attrs = super(BaseTextField, self).get_form_field_widget_attrs(instance)
+        attrs = super(BaseTextField, self).get_form_field_widget_attrs(
+            instance)
         attrs['type'] = self.form_field_widget_input_type
         return attrs
 
@@ -535,7 +549,8 @@ class TextAreaField(BaseTextField):
         return widget
 
     def get_form_field_widget_attrs(self, instance):
-        attrs = super(TextAreaField, self).get_form_field_widget_attrs(instance)
+        attrs = super(TextAreaField, self).get_form_field_widget_attrs(
+            instance)
 
         if instance.text_area_columns:
             attrs['cols'] = instance.text_area_columns
@@ -575,16 +590,17 @@ class EmailField(BaseTextField):
     form_field_widget = forms.EmailInput
     form_field_widget_input_type = 'email'
     fieldset_advanced_fields = [
-        'email_send_notification',
-        'email_subject',
-        'email_body',
-    ] + Field.fieldset_advanced_fields
+                                   'email_send_notification',
+                                   'email_subject',
+                                   'email_body',
+                               ] + Field.fieldset_advanced_fields
     email_template_base = 'cms_forms/emails/user/notification'
 
     def send_notification_email(self, email, form, form_field_instance):
         context = {
             'form_name': form.instance.name,
-            'form_data': form.get_serialized_field_choices(is_confirmation=True),
+            'form_data': form.get_serialized_field_choices(
+                is_confirmation=True),
             'body_text': form_field_instance.email_body,
         }
         send_mail(
@@ -618,8 +634,8 @@ class FileField(Field):
         'validators',
     ]
     fieldset_general_fields = [
-        'upload_to',
-    ] + Field.fieldset_general_fields
+                                  'upload_to',
+                              ] + Field.fieldset_general_fields
     fieldset_advanced_fields = [
         'help_text',
         'max_size',
@@ -691,8 +707,8 @@ class ImageField(FileField):
     form_field = RestrictedImageField
     form_field_widget = RestrictedImageField.widget
     fieldset_general_fields = [
-        'upload_to',
-    ] + Field.fieldset_general_fields
+                                  'upload_to',
+                              ] + Field.fieldset_general_fields
     fieldset_advanced_fields = [
         'help_text',
         'max_size',
@@ -814,17 +830,21 @@ class MultipleSelectField(SelectField):
     def get_form_field_validators(self, instance):
         validators = []
         if instance.min_value:
-            validators.append(MinChoicesValidator(limit_value=instance.min_value))
+            validators.append(
+                MinChoicesValidator(limit_value=instance.min_value))
         if instance.max_value:
-            validators.append(MaxChoicesValidator(limit_value=instance.max_value))
+            validators.append(
+                MaxChoicesValidator(limit_value=instance.max_value))
         return validators
 
     def get_form_field_kwargs(self, instance):
-        kwargs = super(MultipleSelectField, self).get_form_field_kwargs(instance)
+        kwargs = super(MultipleSelectField, self).get_form_field_kwargs(
+            instance)
         if hasattr(instance, 'min_value') and instance.min_value == 0:
             kwargs['required'] = False
 
-        kwargs['initial'] = [o.pk for o in kwargs['queryset'] if o.default_value]
+        kwargs['initial'] = [o.pk for o in kwargs['queryset'] if
+                             o.default_value]
         return kwargs
 
 
@@ -892,6 +912,7 @@ else:
             # None means don't serialize me
             return None
 
+
     plugin_pool.register_plugin(CaptchaField)
 
 
@@ -907,8 +928,8 @@ class HoneypotCaptchaPlugin(Field):
     form_field_widget = forms.TextInput
 
     fieldset_advanced_fields = []
-    form_field_enabled_options = ['label',]
-    fieldset_general_fields = ['label',]
+    form_field_enabled_options = ['label', ]
+    fieldset_general_fields = ['label', ]
 
     def serialize_field(self, *args, **kwargs):
         # None means don't serialize me
@@ -946,7 +967,6 @@ plugin_pool.register_plugin(SelectField)
 plugin_pool.register_plugin(SubmitButton)
 plugin_pool.register_plugin(TextAreaField)
 plugin_pool.register_plugin(TextField)
-
 
 is_honeypot_captcha_enabled = getattr(
     settings, 'CMS_FORMS_IS_HONEYPOT_CAPTCHA_ENABLED', False
