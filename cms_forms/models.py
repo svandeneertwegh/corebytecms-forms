@@ -4,14 +4,16 @@ from collections import defaultdict, namedtuple
 from functools import partial
 from typing import List
 
-from cms.models.fields import PageField
-from cms.models.pluginmodel import CMSPlugin
-from cms.utils.plugins import downcast_plugins
 from django.conf import settings
 from django.db import models
 from django.db.models.functions import Coalesce
 from django.utils.functional import cached_property
 from django.utils.translation import ugettext_lazy as _
+
+from cms.models.fields import PageField
+from cms.models.pluginmodel import CMSPlugin
+from cms.utils.plugins import downcast_plugins
+
 from djangocms_attributes_field.fields import AttributesField
 from filer.fields.folder import FilerFolderField
 from six import text_type
@@ -20,6 +22,7 @@ from .compat import build_plugin_tree
 from .helpers import is_form_element
 from .sizefield.models import FileSizeField
 from .utils import FORMS_ACTION_BACKEND_KEY_MAX_SIZE, action_backend_choices
+
 
 AUTH_USER_MODEL = getattr(settings, 'AUTH_USER_MODEL', 'auth.User')
 
