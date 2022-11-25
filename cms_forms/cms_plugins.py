@@ -20,8 +20,6 @@ from filer.models import filemodels, imagemodels
 from PIL import Image
 from six import text_type
 
-from cms_forms.models import FormPlugin
-
 from . import models
 from .forms import (
     BooleanFieldForm, CaptchaFieldForm, EmailFieldForm, FileFieldForm,

@@ -1,5 +1,5 @@
 try:
-    from StringIO import StringIO ## for Python 2
+    from StringIO import StringIO  # # for Python 2
 except ImportError:
     from io import StringIO ## for Python 3
 
