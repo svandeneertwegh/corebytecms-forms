@@ -35,6 +35,7 @@ class BaseFormSubmissionAdmin(admin.ModelAdmin):
             {'data': data}
         )
         return html
+
     get_data_for_display.allow_tags = True
     get_data_for_display.short_description = _('data')
 
@@ -51,6 +52,7 @@ class BaseFormSubmissionAdmin(admin.ModelAdmin):
             {'people': people_list},
         )
         return html
+
     get_recipients_for_display.allow_tags = True
     get_recipients_for_display.short_description = _('people notified')
 

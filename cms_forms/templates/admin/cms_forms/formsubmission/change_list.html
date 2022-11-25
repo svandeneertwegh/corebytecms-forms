@@ -2,7 +2,7 @@
 {% load i18n admin_urls %}
 
 {% block object-tools %}
-	<ul class="object-tools">
+    <ul class="object-tools">
         {% block object-tools-items %}
             <li>
                 {% url cl.opts|admin_urlname:'export' as export_url %}

@@ -19,10 +19,11 @@ from six import text_type
 from .compat import build_plugin_tree
 from .helpers import is_form_element
 from .sizefield.models import FileSizeField
-from .utils import FORMS_ACTION_BACKEND_KEY_MAX_SIZE, action_backend_choices
+
+from .utils import FORMS_ACTION_BACKEND_KEY_MAX_SIZE
+from .utils import action_backend_choices
 
 AUTH_USER_MODEL = getattr(settings, 'AUTH_USER_MODEL', 'auth.User')
-
 
 # Once djangoCMS < 3.3.1 support is dropped
 # Remove the explicit cmsplugin_ptr field declarations
@@ -63,7 +64,6 @@ BaseSerializedFormField = namedtuple(
 
 
 class SerializedFormField(BaseSerializedFormField):
-
     # For _asdict() with Py3K
     __slots__ = ()
 
@@ -129,7 +129,8 @@ class BaseFormPlugin(CMSPlugin):
         verbose_name=_('Redirect to'),
         max_length=20,
         choices=REDIRECT_CHOICES,
-        help_text=_('Where to redirect the user when the form has been successfully sent?'),
+        help_text=_(
+            'Where to redirect the user when the form has been successfully sent?'),
         blank=True,
     )
     url = models.URLField(_('Absolute URL'), blank=True, null=True)
@@ -254,7 +255,8 @@ class BaseFormPlugin(CMSPlugin):
             if field_plugin.name:
                 field_name = field_plugin.name
             else:
-                field_name = '{0}_{1}'.format(field_type, field_type_occurrence)
+                field_name = '{0}_{1}'.format(field_type,
+                                              field_type_occurrence)
 
             if field_label:
                 field_id = '{0}_{1}'.format(field_type, field_label)
@@ -282,7 +284,8 @@ class BaseFormPlugin(CMSPlugin):
         if is_cache_needs_update:
             form_fields: List[FormField] = self.get_form_fields()
             for form_field in form_fields:
-                self._form_field_key_cache[form_field.plugin_instance.pk] = form_field.name
+                self._form_field_key_cache[
+                    form_field.plugin_instance.pk] = form_field.name
 
         return self._form_field_key_cache[field.pk]
 
@@ -320,7 +323,6 @@ class BaseFormPlugin(CMSPlugin):
 
 
 class FormPlugin(BaseFormPlugin):
-
     class Meta:
         abstract = False
 
@@ -329,7 +331,6 @@ class FormPlugin(BaseFormPlugin):
 
 
 class FieldsetPlugin(CMSPlugin):
-
     legend = models.CharField(_('Legend'), max_length=255, blank=True)
     custom_classes = models.CharField(
         verbose_name=_('custom css classes'), max_length=255, blank=True)
@@ -368,8 +369,9 @@ class FieldPluginBase(CMSPlugin):
         verbose_name=_('Help text'),
         blank=True,
         null=True,
-        help_text=_('Explanatory text displayed next to input field. Just like '
-                    'this one.')
+        help_text=_(
+            'Explanatory text displayed next to input field. Just like '
+            'this one.')
     )
     attributes = AttributesField(
         verbose_name=_('Attributes'),
@@ -498,7 +500,8 @@ class ImageUploadFieldPlugin(FileFieldPluginBase):
 
 
 class Option(models.Model):
-    field = models.ForeignKey(FieldPlugin, editable=False, on_delete=models.CASCADE)
+    field = models.ForeignKey(FieldPlugin, editable=False,
+                              on_delete=models.CASCADE)
     value = models.CharField(_('Value'), max_length=255)
     default_value = models.BooleanField(_('Default'), default=False)
     position = models.PositiveIntegerField(_('Position'), blank=True)
@@ -506,7 +509,7 @@ class Option(models.Model):
     class Meta:
         verbose_name = _('Option')
         verbose_name_plural = _('Options')
-        ordering = ('position', )
+        ordering = ('position',)
 
     def __str__(self):
         return self.value

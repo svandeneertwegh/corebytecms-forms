@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
+from PIL import Image
 from django import forms
 from django.conf import settings
 from django.core.exceptions import ValidationError
 from django.forms.forms import NON_FIELD_ERRORS
 from django.forms.utils import ErrorDict
-from django.utils.translation import ugettext
-from django.utils.translation import ugettext_lazy as _
-from PIL import Image
+
+from django.utils.translation import ugettext, ugettext_lazy as _
 
 from .models import FormPlugin, FormSubmission
 from .sizefield.utils import filesizeformat
@@ -26,7 +26,8 @@ class FileSizeCheckMixin(object):
 
         if self.max_size is not None and data.size > self.max_size:
             raise forms.ValidationError(
-                ugettext('File size must be under %(max_size)s. Current file size is %(actual_size)s.') % {
+                ugettext(
+                    'File size must be under %(max_size)s. Current file size is %(actual_size)s.') % {
                     'max_size': filesizeformat(self.max_size),
                     'actual_size': filesizeformat(data.size),
                 })
@@ -104,11 +105,11 @@ class HoneypotField(forms.CharField):
         data = super(HoneypotField, self).clean(*args, **kwargs)
 
         if data:
-            raise ValidationError(self.error_messages['honeypot'], code='spam-protection')
+            raise ValidationError(self.error_messages['honeypot'],
+                                  code='spam-protection')
 
 
 class FormSubmissionBaseForm(forms.Form):
-
     # these fields are internal.
     # by default we ignore all hidden fields when saving form data to db.
     language = forms.ChoiceField(
@@ -149,7 +150,8 @@ class FormSubmissionBaseForm(forms.Form):
             plugin = field.plugin_instance.get_plugin_class_instance()
             # serialize_field can be None or SerializedFormField  namedtuple instance.
             # if None then it means we shouldn't serialize this field.
-            serialized_field = plugin.serialize_field(self, field, is_confirmation)
+            serialized_field = plugin.serialize_field(self, field,
+                                                      is_confirmation)
 
             if serialized_field:
                 yield serialized_field
@@ -182,7 +184,8 @@ class FormPluginForm(ExtandableErrorForm):
     def __init__(self, *args, **kwargs):
         super(FormPluginForm, self).__init__(*args, **kwargs)
 
-        if getattr(settings, 'CMS_FORMS_SHOW_ALL_RECIPIENTS', False) and 'recipients' in self.fields:
+        if getattr(settings, 'CMS_FORMS_SHOW_ALL_RECIPIENTS',
+                   False) and 'recipients' in self.fields:
             self.fields['recipients'].queryset = get_user_model().objects.all()
 
     def clean(self):
@@ -193,12 +196,14 @@ class FormPluginForm(ExtandableErrorForm):
         if redirect_type:
             if redirect_type == FormPlugin.REDIRECT_TO_PAGE:
                 if not redirect_page:
-                    self.append_to_errors('redirect_page', _('Please provide CMS page for redirect.'))
+                    self.append_to_errors('redirect_page',
+                                          _('Please provide CMS page for redirect.'))
                 self.cleaned_data['url'] = None
 
             if redirect_type == FormPlugin.REDIRECT_TO_URL:
                 if not url:
-                    self.append_to_errors('url', _('Please provide an absolute URL for redirect.'))
+                    self.append_to_errors('url',
+                                          _('Please provide an absolute URL for redirect.'))
                 self.cleaned_data['redirect_page'] = None
         else:
             self.cleaned_data['url'] = None
@@ -217,23 +222,23 @@ class BooleanFieldForm(forms.ModelForm):
         super(BooleanFieldForm, self).__init__(*args, **kwargs)
 
     class Meta:
-        fields = ['label', 'help_text', 'required', 'required_message', 'custom_classes']
+        fields = ['label', 'help_text', 'required', 'required_message',
+                  'custom_classes']
 
 
 class SelectFieldForm(forms.ModelForm):
-
     class Meta:
-        fields = ['label', 'help_text', 'required', 'required_message', 'custom_classes']
+        fields = ['label', 'help_text', 'required', 'required_message',
+                  'custom_classes']
 
 
 class RadioFieldForm(forms.ModelForm):
-
     class Meta:
-        fields = ['label', 'help_text', 'required', 'required_message', 'custom_classes']
+        fields = ['label', 'help_text', 'required', 'required_message',
+                  'custom_classes']
 
 
 class CaptchaFieldForm(forms.ModelForm):
-
     class Meta:
         # captcha is always required
         fields = ['label', 'help_text', 'required_message']
@@ -245,7 +250,8 @@ class MinMaxValueForm(ExtandableErrorForm):
         min_value = self.cleaned_data.get('min_value')
         max_value = self.cleaned_data.get('max_value')
         if min_value and max_value and min_value > max_value:
-            self.append_to_errors('min_value', _('Min value can not be greater than max value.'))
+            self.append_to_errors('min_value',
+                                  _('Min value can not be greater than max value.'))
         return self.cleaned_data
 
 
@@ -255,15 +261,18 @@ class TextFieldForm(MinMaxValueForm):
         super(TextFieldForm, self).__init__(*args, **kwargs)
 
         self.fields['min_value'].label = _('Min length')
-        self.fields['min_value'].help_text = _('Required number of characters to type.')
+        self.fields['min_value'].help_text = _(
+            'Required number of characters to type.')
 
         self.fields['max_value'].label = _('Max length')
-        self.fields['max_value'].help_text = _('Maximum number of characters to type.')
+        self.fields['max_value'].help_text = _(
+            'Maximum number of characters to type.')
         self.fields['max_value'].required = False
 
     class Meta:
         fields = ['label', 'placeholder_text', 'help_text',
-                  'min_value', 'max_value', 'required', 'required_message', 'custom_classes']
+                  'min_value', 'max_value', 'required', 'required_message',
+                  'custom_classes']
 
 
 class HiddenFieldForm(ExtandableErrorForm):
@@ -326,8 +335,10 @@ class TextAreaFieldForm(TextFieldForm):
         self.fields['max_value'].required = False
 
     class Meta:
-        fields = ['label', 'placeholder_text', 'help_text', 'text_area_columns',
-                  'text_area_rows', 'min_value', 'max_value', 'required', 'required_message', 'custom_classes']
+        fields = ['label', 'placeholder_text', 'help_text',
+                  'text_area_columns',
+                  'text_area_rows', 'min_value', 'max_value', 'required',
+                  'required_message', 'custom_classes']
 
 
 class MultipleSelectFieldForm(MinMaxValueForm):
@@ -336,11 +347,14 @@ class MultipleSelectFieldForm(MinMaxValueForm):
         super(MultipleSelectFieldForm, self).__init__(*args, **kwargs)
 
         self.fields['min_value'].label = _('Min choices')
-        self.fields['min_value'].help_text = _('Required amount of elements to chose.')
+        self.fields['min_value'].help_text = _(
+            'Required amount of elements to chose.')
 
         self.fields['max_value'].label = _('Max choices')
-        self.fields['max_value'].help_text = _('Maximum amount of elements to chose.')
+        self.fields['max_value'].help_text = _(
+            'Maximum amount of elements to chose.')
 
     class Meta:
         # 'required' and 'required_message' depend on min_value field validator
-        fields = ['label', 'help_text', 'min_value', 'max_value', 'custom_classes']
+        fields = ['label', 'help_text', 'min_value', 'max_value',
+                  'custom_classes']

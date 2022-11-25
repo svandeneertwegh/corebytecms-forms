@@ -13,7 +13,9 @@ from emailit.api import construct_mail
 from cms_forms.helpers import get_user_name
 from cms_forms.models import FormPlugin
 
-from .helpers import get_email_template_name, get_theme_template_name, render_text
+from .helpers import (
+    get_email_template_name, get_theme_template_name, render_text,
+)
 
 EMAIL_THEMES = getattr(
     settings,
@@ -23,7 +25,6 @@ EMAIL_THEMES = getattr(
 
 
 class EmailNotificationFormPlugin(FormPlugin):
-
     class Meta:
         proxy = True
 
@@ -49,7 +50,6 @@ class EmailNotificationFormPlugin(FormPlugin):
 
 
 class EmailNotification(models.Model):
-
     class Meta:
         verbose_name = _('Email notification')
         verbose_name_plural = _('Email notifications')
@@ -146,7 +146,8 @@ class EmailNotification(models.Model):
 
         context = {
             'form_plugin': self.form,
-            'form_data': form.get_serialized_field_choices(is_confirmation=True),
+            'form_data': form.get_serialized_field_choices(
+                is_confirmation=True),
             'form_name': self.form.name,
             'email_notification': self,
             'email_html_theme': get_template(suffix='html'),
