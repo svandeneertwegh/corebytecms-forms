@@ -1,8 +1,7 @@
-from django.contrib.auth.models import User
-from django.core import mail
-
 from cms.api import add_plugin, create_page
 from cms.test_utils.testcases import CMSTestCase
+from django.contrib.auth.models import User
+from django.core import mail
 
 from cms_forms.models import FormSubmission
 from tests.test_views import CMS_3_6
@@ -12,21 +11,28 @@ class FormPluginTestCase(CMSTestCase):
     def setUp(self):
         super(FormPluginTestCase, self).setUp()
 
-        self.page = create_page(title='test page', menu_title='test page', template='test_page.html', language='en', published=True)
+        self.page = create_page(title='test page', menu_title='test page',
+                                template='test_page.html', language='en',
+                                published=True)
         try:
             self.placeholder = self.page.placeholders.get(slot='content')
         except AttributeError:
-            self.placeholder = self.page.get_placeholders('en').get(slot='content')
-        self.user = User.objects.create_superuser('username', 'email@example.com', 'password')
+            self.placeholder = self.page.get_placeholders('en').get(
+                slot='content')
+        self.user = User.objects.create_superuser('username',
+                                                  'email@example.com',
+                                                  'password')
 
         plugin_data = {
             'redirect_type': 'redirect_to_url',
             'url': 'http://www.google.com',
         }
-        self.form_plugin = add_plugin(self.placeholder, 'FormParentPlugin', 'en', **plugin_data)
+        self.form_plugin = add_plugin(self.placeholder, 'FormParentPlugin',
+                                      'en', **plugin_data)
         self.form_plugin.recipients.add(self.user)
 
-        add_plugin(self.placeholder, 'SubmitButton', 'en', target=self.form_plugin)
+        add_plugin(self.placeholder, 'SubmitButton', 'en',
+                   target=self.form_plugin)
 
     def test_form_submission_default_action(self):
         self.form_plugin.action_backend = 'default'
@@ -69,21 +75,30 @@ class EmailNotificationFormPluginTestCase(CMSTestCase):
     def setUp(self):
         super(EmailNotificationFormPluginTestCase, self).setUp()
 
-        self.page = create_page(title='test page', menu_title='test page', template='test_page.html', language='en', published=True)
+        self.page = create_page(title='test page', menu_title='test page',
+                                template='test_page.html', language='en',
+                                published=True)
         try:
             self.placeholder = self.page.placeholders.get(slot='content')
         except AttributeError:
-            self.placeholder = self.page.get_placeholders('en').get(slot='content')
-        self.user = User.objects.create_superuser('username', 'email@example.com', 'password')
+            self.placeholder = self.page.get_placeholders('en').get(
+                slot='content')
+        self.user = User.objects.create_superuser('username',
+                                                  'email@example.com',
+                                                  'password')
 
         plugin_data = {
             'redirect_type': 'redirect_to_url',
             'url': 'http://www.google.com',
         }
-        self.form_plugin = add_plugin(self.placeholder, 'EmailNotificationForm', 'en', **plugin_data)
-        self.form_plugin.email_notifications.create(to_user=self.user, theme='default')
+        self.form_plugin = add_plugin(self.placeholder,
+                                      'EmailNotificationForm', 'en',
+                                      **plugin_data)
+        self.form_plugin.email_notifications.create(to_user=self.user,
+                                                    theme='default')
 
-        add_plugin(self.placeholder, 'SubmitButton', 'en', target=self.form_plugin)
+        add_plugin(self.placeholder, 'SubmitButton', 'en',
+                   target=self.form_plugin)
 
     def test_form_submission_default_action(self):
         self.form_plugin.action_backend = 'default'
