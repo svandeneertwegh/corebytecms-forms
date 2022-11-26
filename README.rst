@@ -1,5 +1,5 @@
 Features
-===========
+============
 - Create a cms page where you can setup form fields, a captcha and submit button.
 - Works in python3.
 - Set the apphook to 'Forms' and then the redirect works.
@@ -10,7 +10,7 @@ Features
 - In the admin, export is possible to .csv.
 
 Installation
-===========
+============
 
 Run ``pip install git+https://github.com/svandeneertwegh/corebytecms-forms``.
 
