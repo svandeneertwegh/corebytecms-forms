@@ -6,7 +6,7 @@ from django.test import TestCase
 from cms.api import add_plugin
 from cms.models import Placeholder
 
-from corebytecms_forms.models import Option
+from cms_forms.models import Option
 
 
 class OptionTestCase(TestCase):

@@ -3,7 +3,7 @@ import os
 from string import Template
 
 
-EMAIL_TEMPLATES_BASE = 'corebytecms_forms/email_notifications/emails/'
+EMAIL_TEMPLATES_BASE = 'cms_forms/email_notifications/emails/'
 
 EMAIL_THEMES_PATH = os.path.join(EMAIL_TEMPLATES_BASE, 'themes')
 EMAIL_NOTIFICATIONS_PATH = os.path.join(EMAIL_TEMPLATES_BASE, 'notification')

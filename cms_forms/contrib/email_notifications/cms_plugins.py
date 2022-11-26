@@ -7,7 +7,7 @@ from django.utils.translation import gettext_lazy as _
 
 from cms.plugin_pool import plugin_pool
 
-from corebytecms_forms.cms_plugins import FormParentPlugin
+from cms_forms.cms_plugins import FormParentPlugin
 
 from .models import EmailNotification, EmailNotificationFormPlugin
 from .notification import DefaultNotificationConf

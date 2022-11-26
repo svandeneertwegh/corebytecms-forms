@@ -112,7 +112,7 @@ class FormParentPlugin(FieldContainer):
         form = form_class(**form_kwargs)
 
         is_honeypot_captcha_enabled = getattr(
-            settings, 'corebytecms_forms_IS_HONEYPOT_CAPTCHA_ENABLED', False
+            settings, 'cms_forms_IS_HONEYPOT_CAPTCHA_ENABLED', False
         )
         if is_honeypot_captcha_enabled:
             honeypot_fields = [field for field in form.errors if
@@ -230,8 +230,8 @@ class FormParentPlugin(FieldContainer):
 
         payload = {
             'subject': context['form_name'],
-            'message': render_to_string('corebytecms_forms/emails/email.txt', context=context),
-            'html_message': render_to_string('corebytecms_forms/emails/email.html', context=context),
+            'message': render_to_string('cms_forms/emails/email.txt', context=context),
+            'html_message': render_to_string('cms_forms/emails/email.html', context=context),
             'from_email': getattr(settings, 'DEFAULT_FROM_EMAIL', 'Corebyte <noreply@mail.corebyte.nl'),
             'recipient_list': [user.email for user in recipients],
             'fail_silently': False
@@ -274,10 +274,10 @@ class Fieldset(FieldContainer):
         return select_template(templates)
 
     def get_template_names(self, instance, form_plugin=None):
-        template_names = ['corebytecms_forms/fieldset.html']
+        template_names = ['cms_forms/fieldset.html']
 
         if form_plugin:
-            template = 'corebytecms_forms/{}/fieldset.html'.format(
+            template = 'cms_forms/{}/fieldset.html'.format(
                 form_plugin.plugin_type.lower())
             template_names.insert(0, template)
         return template_names
@@ -457,12 +457,12 @@ class Field(FormElement):
 
     def get_template_names(self, instance, form_plugin=None):
         template_names = [
-            'corebytecms_forms/fields/{0}.html'.format(instance.field_type),
-            'corebytecms_forms/field.html',
+            'cms_forms/fields/{0}.html'.format(instance.field_type),
+            'cms_forms/field.html',
         ]
 
         if form_plugin:
-            template = 'corebytecms_forms/{}/fields/{}.html'.format(
+            template = 'cms_forms/{}/fields/{}.html'.format(
                 form_plugin.plugin_type.lower(),
                 instance.field_type,
             )
@@ -589,7 +589,7 @@ class EmailField(BaseTextField):
         'email_subject',
         'email_body',
     ] + Field.fieldset_advanced_fields
-    email_template_base = 'corebytecms_forms/emails/user/notification'
+    email_template_base = 'cms_forms/emails/user/notification'
 
     def send_notification_email(self, email, form, form_field_instance):
         context = {
@@ -600,8 +600,8 @@ class EmailField(BaseTextField):
         }
         payload = {
             'subject': form_field_instance.email_subject,
-            'message': render_to_string('corebytecms_forms/emails/email.html', context=context),
-            'html_message': render_to_string('corebytecms_forms/emails/html_email.html', context=context),
+            'message': render_to_string('cms_forms/emails/email.html', context=context),
+            'html_message': render_to_string('cms_forms/emails/html_email.html', context=context),
             'from_email': getattr(settings, 'DEFAULT_FROM_EMAIL', 'Corebyte <noreply@mail.corebyte.nl'),
             'recipient_list': [email],
             'fail_silently': False
@@ -943,7 +943,7 @@ class LemonCup(HoneypotCaptchaPlugin):
 
 
 class SubmitButton(FormElement):
-    render_template = 'corebytecms_forms/submit_button.html'
+    render_template = 'cms_forms/submit_button.html'
     name = _('Submit Button')
     model = models.FormButtonPlugin
 
@@ -967,7 +967,7 @@ plugin_pool.register_plugin(TextAreaField)
 plugin_pool.register_plugin(TextField)
 
 is_honeypot_captcha_enabled = getattr(
-    settings, 'corebytecms_forms_IS_HONEYPOT_CAPTCHA_ENABLED', False
+    settings, 'cms_forms_IS_HONEYPOT_CAPTCHA_ENABLED', False
 )
 if is_honeypot_captcha_enabled:
     plugin_pool.register_plugin(LemonCup)

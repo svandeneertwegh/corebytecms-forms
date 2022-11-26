@@ -4,7 +4,7 @@ from django.core import mail
 from cms.api import add_plugin, create_page
 from cms.test_utils.testcases import CMSTestCase
 
-from corebytecms_forms.models import FormSubmission
+from cms_forms.models import FormSubmission
 from tests.test_views import CMS_3_6
 
 

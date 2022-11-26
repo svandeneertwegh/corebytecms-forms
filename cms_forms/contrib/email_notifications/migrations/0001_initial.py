@@ -12,7 +12,7 @@ class Migration(migrations.Migration):
 
     dependencies = [
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
-        ('corebytecms_forms', '0001_initial'),
+        ('cms_forms', '0001_initial'),
     ]
 
     operations = [
@@ -25,7 +25,7 @@ class Migration(migrations.Migration):
                 'indexes': [],
                 'constraints': [],
             },
-            bases=('corebytecms_forms.formplugin',),
+            bases=('cms_forms.formplugin',),
         ),
         migrations.CreateModel(
             name='EmailNotification',
