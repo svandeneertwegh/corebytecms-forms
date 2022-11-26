@@ -23,7 +23,7 @@ CLASSIFIERS = [
     'License :: OSI Approved :: BSD License',
     'Operating System :: OS Independent',
     'Framework :: Django',
-    'Framework :: Django :: 2.2',
+    'Framework :: Django :: 3.2',
     'Programming Language :: Python',
     'Programming Language :: Python :: 3',
     'Programming Language :: Python :: 3.4',
