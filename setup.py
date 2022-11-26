@@ -13,8 +13,8 @@ REQUIREMENTS = [
     'django-filer',
     'django-sizefield',
     'six>=1.0',
+    'django-simple-captcha',
 ]
-
 
 CLASSIFIERS = [
     'Development Status :: 5 - Production/Stable',
@@ -53,9 +53,9 @@ setup(
     include_package_data=True,
     zip_safe=False,
     install_requires=REQUIREMENTS,
-    extras_require={
-        'captcha': ['django-simple-captcha'],
-    },
+    # extras_require={
+    #     'captcha': ['django-simple-captcha'],
+    # },
     classifiers=CLASSIFIERS,
     test_suite='tests.settings.run',
 )

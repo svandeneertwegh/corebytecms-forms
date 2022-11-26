@@ -4,8 +4,8 @@ from django.conf import settings
 from django.core.exceptions import ValidationError
 from django.forms.forms import NON_FIELD_ERRORS
 from django.forms.utils import ErrorDict
-from django.utils.translation import ugettext
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext
+from django.utils.translation import gettext_lazy as _
 
 from PIL import Image
 
@@ -27,7 +27,7 @@ class FileSizeCheckMixin(object):
 
         if self.max_size is not None and data.size > self.max_size:
             raise forms.ValidationError(
-                ugettext(
+                gettext(
                     'File size must be under %(max_size)s. Current file size is %(actual_size)s.') % {
                     'max_size': filesizeformat(self.max_size),
                     'actual_size': filesizeformat(data.size),
@@ -62,7 +62,7 @@ class RestrictedImageField(FileSizeCheckMixin, forms.ImageField):
 
         if self.max_width and width > self.max_width:
             raise forms.ValidationError(
-                ugettext(
+                gettext(
                     'Image width must be under %(max_size)s pixels. '
                     'Current width is %(actual_size)s pixels.'
                 ) % {
@@ -72,7 +72,7 @@ class RestrictedImageField(FileSizeCheckMixin, forms.ImageField):
 
         if self.max_height and height > self.max_height:
             raise forms.ValidationError(
-                ugettext(
+                gettext(
                     'Image height must be under %(max_size)s pixels. '
                     'Current height is %(actual_size)s pixels.'
                 ) % {

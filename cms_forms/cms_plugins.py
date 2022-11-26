@@ -4,13 +4,14 @@ from django import forms
 from django.conf import settings
 from django.contrib import messages
 from django.contrib.admin import TabularInline
+from django.core.mail import send_mail
 from django.core.validators import MinLengthValidator
 from django.db.models import query
 from django.shortcuts import redirect
-from django.template.loader import select_template
+from django.template.loader import select_template, render_to_string
 from django.utils.safestring import mark_safe
-from django.utils.translation import ugettext
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext
+from django.utils.translation import gettext_lazy as _
 
 from cms.plugin_base import CMSPluginBase
 from cms.plugin_pool import plugin_pool
@@ -19,7 +20,6 @@ from filer.models import filemodels, imagemodels
 from PIL import Image
 from six import text_type
 
-from emailit.api import send_mail
 
 from . import models
 from .forms import (
@@ -212,7 +212,7 @@ class FormParentPlugin(FieldContainer):
         Sends a success message to the request user
         using django's contrib.messages app.
         """
-        message = instance.success_message or ugettext(
+        message = instance.success_message or gettext(
             'The form has been sent.')
         messages.success(request, mark_safe(message))
 
@@ -226,14 +226,19 @@ class FormParentPlugin(FieldContainer):
             'form_name': instance.name,
             'form_data': form.get_serialized_field_choices(),
             'form_plugin': instance,
+            'language': instance.language
         }
 
-        send_mail(
-            recipients=[user.email for user in recipients],
-            context=context,
-            template_base='cms_forms/emails/notification',
-            language=instance.language,
-        )
+        payload = {
+            'subject': context['form_name'],
+            'message': render_to_string('cms_forms/emails/email.txt', context=context),
+            'html_message': render_to_string('cms_forms/emails/email.html', context=context),
+            'from_email': getattr(settings, 'DEFAULT_FROM_EMAIL', 'Corebyte <noreply@mail.corebyte.nl'),
+            'recipient_list': [user.email for user in recipients],
+            'fail_silently': False
+        }
+
+        send_mail(**payload)
 
         users_notified = [
             (get_user_name(user), user.email) for user in recipients]
@@ -594,12 +599,16 @@ class EmailField(BaseTextField):
                 is_confirmation=True),
             'body_text': form_field_instance.email_body,
         }
-        send_mail(
-            recipients=[email],
-            context=context,
-            subject=form_field_instance.email_subject,
-            template_base=self.email_template_base
-        )
+        payload = {
+            'subject': form_field_instance.email_subject,
+            'message': render_to_string('cms_forms/emails/email.html', context=context),
+            'html_message': render_to_string('cms_forms/emails/html_email.html', context=context),
+            'from_email': getattr(settings, 'DEFAULT_FROM_EMAIL', 'Corebyte <noreply@mail.corebyte.nl'),
+            'recipient_list': [email],
+            'fail_silently': False
+        }
+
+        send_mail(**payload)
 
     def form_post_save(self, instance, form, **kwargs):
         field_name = form.form_plugin.get_form_field_name(field=instance)
@@ -753,7 +762,7 @@ class BooleanField(Field):
     ]
 
     def serialize_value(self, instance, value, is_confirmation=False):
-        return ugettext('Yes') if value else ugettext('No')
+        return gettext('Yes') if value else gettext('No')
 
 
 class SelectOptionInline(TabularInline):

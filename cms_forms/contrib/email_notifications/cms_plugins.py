@@ -5,7 +5,7 @@ from email.utils import parseaddr
 from django.contrib import admin
 from django.core.mail import get_connection
 from django.utils.html import mark_safe
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 
 from cms.plugin_pool import plugin_pool
 
@@ -163,38 +163,6 @@ class EmailNotificationForm(FormParentPlugin):
                        if
                        not isinstance(inline, ExistingEmailNotificationInline)]
         return inlines
-
-    def send_notifications(self, instance, form):
-        try:
-            connection = get_connection(fail_silently=False)
-            connection.open()
-        except:  # noqa
-            # I use a "catch all" in order to not couple this handler to a specific email backend
-            # different email backends have different exceptions.
-            logger.exception("Could not send notification emails.")
-            return []
-
-        notifications = instance.email_notifications.select_related('form')
-
-        emails = []
-        recipients = []
-
-        for notification in notifications:
-            email = notification.prepare_email(form=form)
-
-            to_email = email.to[0]
-
-            if is_valid_recipient(to_email):
-                emails.append(email)
-                recipients.append(parseaddr(to_email))
-
-        try:
-            connection.send_messages(emails)
-        except:  # noqa
-            # again, we catch all exceptions to be backend agnostic
-            logger.exception("Could not send notification emails.")
-            recipients = []
-        return recipients
 
 
 plugin_pool.register_plugin(EmailNotificationForm)

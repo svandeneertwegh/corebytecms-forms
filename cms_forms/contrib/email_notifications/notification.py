@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
-from django.utils.translation import ugettext
-
-from .helpers import get_email_template_name
+from django.utils.translation import gettext
 
 
 class BaseNotificationConf(object):
@@ -28,13 +26,13 @@ class BaseNotificationConf(object):
     def __init__(self, form_plugin):
         self.form_plugin = form_plugin
 
-    def get_txt_email_template_name(self):
-        return get_email_template_name(
-            name=self.txt_email_template_name, suffix='txt')
-
-    def get_html_email_template_name(self):
-        return get_email_template_name(
-            name=self.html_email_template_name, suffix='html')
+    # def get_txt_email_template_name(self):
+    #     return get_email_template_name(
+    #         name=self.txt_email_template_name, suffix='txt')
+    #
+    # def get_html_email_template_name(self):
+    #     return get_email_template_name(
+    #         name=self.html_email_template_name, suffix='html')
 
     def get_context(self, form):
         text_context = form.get_cleaned_data(is_confirmation=True)
@@ -51,7 +49,7 @@ class BaseNotificationConf(object):
     def get_context_keys_as_choices(self):
         choices = [
             (
-                ugettext('Fields'),
+                gettext('Fields'),
                 list(self.form_plugin.get_form_fields_as_choices())
             ),
         ]

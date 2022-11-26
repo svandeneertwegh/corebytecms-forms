@@ -6,7 +6,7 @@ import sys
 
 from django.conf import settings
 from django.utils import formats
-from django.utils.translation import ugettext as _
+from django.utils.translation import gettext as _
 
 import six
 
