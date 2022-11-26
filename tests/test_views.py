@@ -19,7 +19,7 @@ CMS_3_6 = LooseVersion(cms.__version__) < LooseVersion('4.0')
 class SubmitFormViewTest(CMSTestCase):
 
     def setUp(self):
-        self.APP_MODULE = 'cms_forms.cms_apps.FormsApp'
+        self.APP_MODULE = 'corebytecms_forms.cms_apps.FormsApp'
         clear_app_resolvers()
         clear_url_caches()
 

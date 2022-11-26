@@ -20,8 +20,8 @@ INSTALLED_APPS = [
     "djangocms_text_ckeditor",
     "sekizai",
 
-    "cms_forms",
-    "cms_forms.contrib.email_notifications",
+    "corebytecms_forms",
+    "corebytecms_forms.contrib.email_notifications",
     "captcha",
 ]
 

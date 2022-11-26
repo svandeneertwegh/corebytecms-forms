@@ -3,7 +3,7 @@ from cms.test_utils.testcases import CMSTestCase
 from django.contrib.auth.models import User
 from django.core import mail
 
-from cms_forms.models import FormSubmission
+from corebytecms_forms.models import FormSubmission
 from tests.test_views import CMS_3_6
 
 
