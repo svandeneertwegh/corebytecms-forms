@@ -9,7 +9,7 @@ class FormsApp(CMSApp):
     name = _('Forms')
 
     def get_urls(self, *args, **kwargs):
-        return ['cms_forms.urls']
+        return ['corebytecms_forms.urls']
 
 
 apphook_pool.register(FormsApp)

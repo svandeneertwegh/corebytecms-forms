@@ -3,5 +3,5 @@ from django.utils.translation import gettext_lazy as _
 
 
 class FormConfig(AppConfig):
-    name = 'cms_forms'
+    name = 'corebytecms_forms'
     verbose_name = _('Forms')

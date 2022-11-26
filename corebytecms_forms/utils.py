@@ -14,19 +14,19 @@ from .compat import build_plugin_tree
 
 
 DEFAULT_FORMS_ACTION_BACKENDS = {
-    'default': 'cms_forms.action_backends.DefaultAction',
-    'email_only': 'cms_forms.action_backends.EmailAction',
-    'none': 'cms_forms.action_backends.NoAction',
+    'default': 'corebytecms_forms.action_backends.DefaultAction',
+    'email_only': 'corebytecms_forms.action_backends.EmailAction',
+    'none': 'corebytecms_forms.action_backends.NoAction',
 }
 FORMS_ACTION_BACKEND_KEY_MAX_SIZE = 15
 
 
 def get_action_backends():
-    base_error_msg = 'Invalid settings.CMS_FORMS_ACTION_BACKENDS.'
+    base_error_msg = 'Invalid settings.corebytecms_forms_ACTION_BACKENDS.'
     max_key_size = FORMS_ACTION_BACKEND_KEY_MAX_SIZE
 
     try:
-        backends = settings.CMS_FORMS_ACTION_BACKENDS
+        backends = settings.corebytecms_forms_ACTION_BACKENDS
     except AttributeError:
         backends = DEFAULT_FORMS_ACTION_BACKENDS
 
@@ -43,7 +43,7 @@ def get_action_backends():
 
     if not all(issubclass(klass, BaseAction) for klass in backends.values()):
         raise ImproperlyConfigured(
-            '{} All classes must derive from cms_forms.action_backends_base.BaseAction'
+            '{} All classes must derive from corebytecms_forms.action_backends_base.BaseAction'
             .format(base_error_msg)
         )
 

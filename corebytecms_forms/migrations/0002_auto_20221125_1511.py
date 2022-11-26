@@ -6,7 +6,7 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('cms_forms', '0001_initial'),
+        ('corebytecms_forms', '0001_initial'),
     ]
 
     operations = [

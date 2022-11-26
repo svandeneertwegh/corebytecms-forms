@@ -89,14 +89,14 @@ class SerializedFormField(BaseSerializedFormField):
 
 
 class BaseFormPlugin(CMSPlugin):
-    FALLBACK_FORM_TEMPLATE = 'cms_forms/form.html'
+    FALLBACK_FORM_TEMPLATE = 'corebytecms_forms/form.html'
     DEFAULT_FORM_TEMPLATE = getattr(
-        settings, 'CMS_FORMS_DEFAULT_TEMPLATE', FALLBACK_FORM_TEMPLATE)
+        settings, 'corebytecms_forms_DEFAULT_TEMPLATE', FALLBACK_FORM_TEMPLATE)
 
     FORM_TEMPLATES = ((DEFAULT_FORM_TEMPLATE, _('Default')),)
 
-    if hasattr(settings, 'CMS_FORMS_TEMPLATES'):
-        FORM_TEMPLATES += settings.CMS_FORMS_TEMPLATES
+    if hasattr(settings, 'corebytecms_forms_TEMPLATES'):
+        FORM_TEMPLATES += settings.corebytecms_forms_TEMPLATES
 
     REDIRECT_TO_PAGE = 'redirect_to_page'
     REDIRECT_TO_URL = 'redirect_to_url'

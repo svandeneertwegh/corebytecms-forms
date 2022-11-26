@@ -9,7 +9,7 @@ import cms.models.fields
 import djangocms_attributes_field.fields
 import filer.fields.folder
 
-import cms_forms.sizefield.models
+import corebytecms_forms.sizefield.models
 
 
 class Migration(migrations.Migration):
@@ -64,7 +64,7 @@ class Migration(migrations.Migration):
                 ('cmsplugin_ptr', models.OneToOneField(
                     on_delete=django.db.models.deletion.CASCADE,
                     parent_link=True, primary_key=True,
-                    related_name='cms_forms_emailfieldplugin', serialize=False,
+                    related_name='corebytecms_forms_emailfieldplugin', serialize=False,
                     to='cms.cmsplugin')),
                 ('email_send_notification', models.BooleanField(default=False,
                                                                 help_text='When checked, the value of this field will be used to send an email notification.',
@@ -124,7 +124,7 @@ class Migration(migrations.Migration):
                 ('cmsplugin_ptr', models.OneToOneField(
                     on_delete=django.db.models.deletion.CASCADE,
                     parent_link=True, primary_key=True,
-                    related_name='cms_forms_fieldplugin', serialize=False,
+                    related_name='corebytecms_forms_fieldplugin', serialize=False,
                     to='cms.cmsplugin')),
             ],
             options={
@@ -142,7 +142,7 @@ class Migration(migrations.Migration):
                 ('cmsplugin_ptr', models.OneToOneField(
                     on_delete=django.db.models.deletion.CASCADE,
                     parent_link=True, primary_key=True,
-                    related_name='cms_forms_fieldsetplugin', serialize=False,
+                    related_name='corebytecms_forms_fieldsetplugin', serialize=False,
                     to='cms.cmsplugin')),
             ],
             options={
@@ -160,7 +160,7 @@ class Migration(migrations.Migration):
                 ('cmsplugin_ptr', models.OneToOneField(
                     on_delete=django.db.models.deletion.CASCADE,
                     parent_link=True, primary_key=True,
-                    related_name='cms_forms_formbuttonplugin', serialize=False,
+                    related_name='corebytecms_forms_formbuttonplugin', serialize=False,
                     to='cms.cmsplugin')),
             ],
             options={
@@ -236,7 +236,7 @@ class Migration(migrations.Migration):
                 ('cmsplugin_ptr', models.OneToOneField(
                     on_delete=django.db.models.deletion.CASCADE,
                     parent_link=True, primary_key=True,
-                    related_name='cms_forms_textareafieldplugin',
+                    related_name='corebytecms_forms_textareafieldplugin',
                     serialize=False, to='cms.cmsplugin')),
                 ('text_area_columns',
                  models.PositiveIntegerField(blank=True, null=True,
@@ -263,7 +263,7 @@ class Migration(migrations.Migration):
                                                          verbose_name='Position')),
                 ('field', models.ForeignKey(editable=False,
                                             on_delete=django.db.models.deletion.CASCADE,
-                                            to='cms_forms.fieldplugin')),
+                                            to='corebytecms_forms.fieldplugin')),
             ],
             options={
                 'verbose_name': 'Option',
@@ -313,10 +313,10 @@ class Migration(migrations.Migration):
                 ('cmsplugin_ptr', models.OneToOneField(
                     on_delete=django.db.models.deletion.CASCADE,
                     parent_link=True, primary_key=True,
-                    related_name='cms_forms_imageuploadfieldplugin',
+                    related_name='corebytecms_forms_imageuploadfieldplugin',
                     serialize=False, to='cms.cmsplugin')),
                 ('max_size',
-                 cms_forms.sizefield.models.FileSizeField(blank=True,
+                 corebytecms_forms.sizefield.models.FileSizeField(blank=True,
                                                           help_text='The maximum file size of the upload, in bytes. You can use common size suffixes (kB, MB, GB, ...).',
                                                           null=True,
                                                           verbose_name='Maximum file size')),
@@ -363,8 +363,8 @@ class Migration(migrations.Migration):
                 ('custom_classes', models.CharField(blank=True, max_length=255,
                                                     verbose_name='custom css classes')),
                 ('form_template',
-                 models.CharField(choices=[('cms_forms/form.html', 'Default')],
-                                  default='cms_forms/form.html',
+                 models.CharField(choices=[('corebytecms_forms/form.html', 'Default')],
+                                  default='corebytecms_forms/form.html',
                                   max_length=255,
                                   verbose_name='form template')),
                 ('action_backend', models.CharField(
@@ -379,7 +379,7 @@ class Migration(migrations.Migration):
                 ('cmsplugin_ptr', models.OneToOneField(
                     on_delete=django.db.models.deletion.CASCADE,
                     parent_link=True, primary_key=True,
-                    related_name='cms_forms_formplugin', serialize=False,
+                    related_name='corebytecms_forms_formplugin', serialize=False,
                     to='cms.cmsplugin')),
                 ('recipients', models.ManyToManyField(blank=True,
                                                       help_text='People who will get the form content via e-mail.',
@@ -440,10 +440,10 @@ class Migration(migrations.Migration):
                 ('cmsplugin_ptr', models.OneToOneField(
                     on_delete=django.db.models.deletion.CASCADE,
                     parent_link=True, primary_key=True,
-                    related_name='cms_forms_fileuploadfieldplugin',
+                    related_name='corebytecms_forms_fileuploadfieldplugin',
                     serialize=False, to='cms.cmsplugin')),
                 ('max_size',
-                 cms_forms.sizefield.models.FileSizeField(blank=True,
+                 corebytecms_forms.sizefield.models.FileSizeField(blank=True,
                                                           help_text='The maximum file size of the upload, in bytes. You can use common size suffixes (kB, MB, GB, ...).',
                                                           null=True,
                                                           verbose_name='Maximum file size')),

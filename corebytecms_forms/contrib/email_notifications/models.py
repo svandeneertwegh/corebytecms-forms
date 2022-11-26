@@ -7,13 +7,13 @@ from django.utils.translation import gettext_lazy as _
 
 from djangocms_text_ckeditor.fields import HTMLField
 
-from cms_forms.helpers import get_user_name
-from cms_forms.models import FormPlugin
+from corebytecms_forms.helpers import get_user_name
+from corebytecms_forms.models import FormPlugin
 
 
 EMAIL_THEMES = getattr(
     settings,
-    "CMS_FORMS_EMAIL_THEMES",
+    "corebytecms_forms_EMAIL_THEMES",
     [('default', _('default'))]
 )
 
