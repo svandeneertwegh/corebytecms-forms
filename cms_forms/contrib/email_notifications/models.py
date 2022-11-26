@@ -1,7 +1,4 @@
 # -*- coding: utf-8 -*-
-from email.utils import formataddr
-from functools import partial
-
 from django.conf import settings
 from django.core.exceptions import ValidationError
 from django.db import models

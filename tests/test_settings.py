@@ -1,4 +1,3 @@
-from cms.utils.compat import DJANGO_3_1
 import os
 
 
