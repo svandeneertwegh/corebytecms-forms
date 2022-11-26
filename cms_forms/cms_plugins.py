@@ -8,7 +8,7 @@ from django.core.mail import send_mail
 from django.core.validators import MinLengthValidator
 from django.db.models import query
 from django.shortcuts import redirect
-from django.template.loader import select_template, render_to_string
+from django.template.loader import render_to_string, select_template
 from django.utils.safestring import mark_safe
 from django.utils.translation import gettext
 from django.utils.translation import gettext_lazy as _
@@ -19,7 +19,6 @@ from cms.plugin_pool import plugin_pool
 from filer.models import filemodels, imagemodels
 from PIL import Image
 from six import text_type
-
 
 from . import models
 from .forms import (

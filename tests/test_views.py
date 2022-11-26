@@ -27,9 +27,10 @@ class SubmitFormViewTest(CMSTestCase):
             del sys.modules[self.APP_MODULE]
 
         self.page = create_page(
-            'tpage',
-            'test_page.html',
-            'en',
+            menu_title='tplage0',
+            title='tpage',
+            template='test_page.html',
+            language='en',
             published=True,
             apphook='FormsApp',
         )

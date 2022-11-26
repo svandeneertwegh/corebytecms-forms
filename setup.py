@@ -57,5 +57,5 @@ setup(
     #     'captcha': ['django-simple-captcha'],
     # },
     classifiers=CLASSIFIERS,
-    test_suite='tests.settings.run',
+    test_suite='run_tests.run',
 )

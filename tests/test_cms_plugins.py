@@ -12,7 +12,7 @@ class FormPluginTestCase(CMSTestCase):
     def setUp(self):
         super(FormPluginTestCase, self).setUp()
 
-        self.page = create_page('test page', 'test_page.html', 'en', published=True)
+        self.page = create_page(title='test page', menu_title='test page', template='test_page.html', language='en', published=True)
         try:
             self.placeholder = self.page.placeholders.get(slot='content')
         except AttributeError:
@@ -69,7 +69,7 @@ class EmailNotificationFormPluginTestCase(CMSTestCase):
     def setUp(self):
         super(EmailNotificationFormPluginTestCase, self).setUp()
 
-        self.page = create_page('test page', 'test_page.html', 'en', published=True)
+        self.page = create_page(title='test page', menu_title='test page', template='test_page.html', language='en', published=True)
         try:
             self.placeholder = self.page.placeholders.get(slot='content')
         except AttributeError:

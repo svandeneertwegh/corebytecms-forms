@@ -77,4 +77,5 @@ npm-debug.log
 package-lock.json
 
 local.sqlite
+mydatabase.sqlite
 .vscode
