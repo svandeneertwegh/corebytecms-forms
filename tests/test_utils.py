@@ -4,7 +4,9 @@ from django.utils.translation import ugettext_lazy as _
 
 from cms.test_utils.testcases import CMSTestCase
 
-from corebytecms_forms.action_backends import DefaultAction, EmailAction, NoAction
+from corebytecms_forms.action_backends import (
+    DefaultAction, EmailAction, NoAction,
+)
 from corebytecms_forms.action_backends_base import BaseAction
 from corebytecms_forms.utils import action_backend_choices, get_action_backends
 
