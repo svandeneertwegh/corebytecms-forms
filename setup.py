@@ -48,14 +48,12 @@ setup(
     url='https://github.com/svandeneertwegh/corebytecms-forms',
     license='BSD',
     description='Create forms and embed them on CMS pages',
-    long_description=open('README.md').read(),
+    long_description=open('README.rst').read(),
+    long_description_content_type="text/x-rst",
     packages=find_packages(exclude=['tests']),
     include_package_data=True,
     zip_safe=False,
     install_requires=REQUIREMENTS,
-    # extras_require={
-    #     'captcha': ['django-simple-captcha'],
-    # },
     classifiers=CLASSIFIERS,
     test_suite='run_tests.run',
 )
