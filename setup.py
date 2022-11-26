@@ -41,7 +41,7 @@ CLASSIFIERS = [
 
 
 setup(
-    name='cms_forms',
+    name='corebytecms-forms',
     version=__version__,
     author='Corebyte',
     author_email='info@corebyte.nl',
