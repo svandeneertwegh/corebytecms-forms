@@ -50,7 +50,7 @@ setup(
     description='Create forms and embed them on CMS pages',
     long_description=open('README.rst').read(),
     long_description_content_type="text/x-rst",
-    packages=find_packages('cms_forms'),
+    packages=find_packages(),
     include_package_data=True,
     zip_safe=False,
     keywords='django django-cms form-builder form fields',
