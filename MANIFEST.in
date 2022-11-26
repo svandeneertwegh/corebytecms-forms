@@ -1,0 +1,6 @@
+include LICENSE
+include README.rst
+recursive-include cms_forms/locale *
+recursive-include cms_forms/templates *
+recursive-include cms_forms/contrib *
+recursive-exclude * *.py[co]
