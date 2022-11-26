@@ -20,7 +20,7 @@ Update ``INSTALLED_APPS`` with ::
         ...
         'cms_forms',
         'cms_forms.contrib.email_notifications',
-        'filer',
+        'captcha',
     ]
 
 
