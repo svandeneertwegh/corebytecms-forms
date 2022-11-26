@@ -53,6 +53,7 @@ setup(
     packages=find_packages(exclude=['tests']),
     include_package_data=True,
     zip_safe=False,
+    keywords='django django-cms form-builder form fields',
     install_requires=REQUIREMENTS,
     classifiers=CLASSIFIERS,
     test_suite='run_tests.run',
