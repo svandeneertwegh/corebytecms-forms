@@ -1,9 +1,0 @@
-{% load i18n %}
-{% if body_text %}
-{% autoescape off %}
-{{ body_text }}
-{% endautoescape %}
-{% else %}
-{% blocktrans %}Form name: {{ form_name }}{% endblocktrans %}
-{% include "cms_forms/emails/includes/form_data.txt" %}
-{% endif %}

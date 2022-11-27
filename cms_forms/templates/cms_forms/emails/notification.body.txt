@@ -1,3 +1,0 @@
-{% load i18n %}
-{% blocktrans %}Form name: {{ form_name }}{% endblocktrans %}
-{% include "cms_forms/emails/includes/form_data.txt" %}
