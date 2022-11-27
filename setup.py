@@ -11,7 +11,6 @@ REQUIREMENTS = [
     'pandas',
     'pillow',
     'django-filer',
-    'django-sizefield',
     'six>=1.0',
     'django-simple-captcha',
 ]
